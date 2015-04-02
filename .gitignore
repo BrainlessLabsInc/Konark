@@ -28,4 +28,4 @@
 *.app
 
 # cloud9 files
-.c/*
+.c9/*
