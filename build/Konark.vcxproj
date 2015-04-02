@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9487B9FF-B8D9-4572-B3B2-E840816E4ACA}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Konark</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\bin</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2test.lib;SDL2main.lib;SDL2.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\containers\tree\NTree.hpp" />
+    <ClInclude Include="..\include\log\Log.hpp" />
+    <ClInclude Include="..\include\log\spdlog\async_logger.h" />
+    <ClInclude Include="..\include\log\spdlog\common.h" />
+    <ClInclude Include="..\include\log\spdlog\details\async_logger_impl.h" />
+    <ClInclude Include="..\include\log\spdlog\details\async_log_helper.h" />
+    <ClInclude Include="..\include\log\spdlog\details\file_helper.h" />
+    <ClInclude Include="..\include\log\spdlog\details\line_logger.h" />
+    <ClInclude Include="..\include\log\spdlog\details\logger_impl.h" />
+    <ClInclude Include="..\include\log\spdlog\details\log_msg.h" />
+    <ClInclude Include="..\include\log\spdlog\details\mpmc_bounded_q.h" />
+    <ClInclude Include="..\include\log\spdlog\details\null_mutex.h" />
+    <ClInclude Include="..\include\log\spdlog\details\os.h" />
+    <ClInclude Include="..\include\log\spdlog\details\pattern_formatter_impl.h" />
+    <ClInclude Include="..\include\log\spdlog\details\registry.h" />
+    <ClInclude Include="..\include\log\spdlog\details\spdlog_impl.h" />
+    <ClInclude Include="..\include\log\spdlog\formatter.h" />
+    <ClInclude Include="..\include\log\spdlog\logger.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\base_sink.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\file_sinks.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\null_sink.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\ostream_sink.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\sink.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\stdout_sinks.h" />
+    <ClInclude Include="..\include\log\spdlog\sinks\syslog_sink.h" />
+    <ClInclude Include="..\include\log\spdlog\spdlog.h" />
+    <ClInclude Include="..\include\math\Matrix.hpp" />
+    <ClInclude Include="..\include\nanovg\fontstash.h" />
+    <ClInclude Include="..\include\nanovg\nanovg.h" />
+    <ClInclude Include="..\include\nanovg\nanovg_gl.h" />
+    <ClInclude Include="..\include\nanovg\nanovg_gl_utils.h" />
+    <ClInclude Include="..\include\nanovg\stb_image.h" />
+    <ClInclude Include="..\include\nanovg\stb_truetype.h" />
+    <ClInclude Include="..\include\rapidjson\allocators.h" />
+    <ClInclude Include="..\include\rapidjson\document.h" />
+    <ClInclude Include="..\include\rapidjson\encodedstream.h" />
+    <ClInclude Include="..\include\rapidjson\encodings.h" />
+    <ClInclude Include="..\include\rapidjson\error\en.h" />
+    <ClInclude Include="..\include\rapidjson\error\error.h" />
+    <ClInclude Include="..\include\rapidjson\filereadstream.h" />
+    <ClInclude Include="..\include\rapidjson\filestream.h" />
+    <ClInclude Include="..\include\rapidjson\filewritestream.h" />
+    <ClInclude Include="..\include\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="..\include\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="..\include\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="..\include\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="..\include\rapidjson\internal\itoa.h" />
+    <ClInclude Include="..\include\rapidjson\internal\meta.h" />
+    <ClInclude Include="..\include\rapidjson\internal\pow10.h" />
+    <ClInclude Include="..\include\rapidjson\internal\stack.h" />
+    <ClInclude Include="..\include\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="..\include\rapidjson\internal\strtod.h" />
+    <ClInclude Include="..\include\rapidjson\memorybuffer.h" />
+    <ClInclude Include="..\include\rapidjson\memorystream.h" />
+    <ClInclude Include="..\include\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="..\include\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="..\include\rapidjson\prettywriter.h" />
+    <ClInclude Include="..\include\rapidjson\rapidjson.h" />
+    <ClInclude Include="..\include\rapidjson\reader.h" />
+    <ClInclude Include="..\include\rapidjson\stringbuffer.h" />
+    <ClInclude Include="..\include\rapidjson\writer.h" />
+    <ClInclude Include="..\include\SDL\begin_code.h" />
+    <ClInclude Include="..\include\SDL\close_code.h" />
+    <ClInclude Include="..\include\SDL\SDL.h" />
+    <ClInclude Include="..\include\SDL\SDL_assert.h" />
+    <ClInclude Include="..\include\SDL\SDL_atomic.h" />
+    <ClInclude Include="..\include\SDL\SDL_audio.h" />
+    <ClInclude Include="..\include\SDL\SDL_bits.h" />
+    <ClInclude Include="..\include\SDL\SDL_blendmode.h" />
+    <ClInclude Include="..\include\SDL\SDL_clipboard.h" />
+    <ClInclude Include="..\include\SDL\SDL_config.h" />
+    <ClInclude Include="..\include\SDL\SDL_cpuinfo.h" />
+    <ClInclude Include="..\include\SDL\SDL_endian.h" />
+    <ClInclude Include="..\include\SDL\SDL_error.h" />
+    <ClInclude Include="..\include\SDL\SDL_events.h" />
+    <ClInclude Include="..\include\SDL\SDL_filesystem.h" />
+    <ClInclude Include="..\include\SDL\SDL_gamecontroller.h" />
+    <ClInclude Include="..\include\SDL\SDL_gesture.h" />
+    <ClInclude Include="..\include\SDL\SDL_haptic.h" />
+    <ClInclude Include="..\include\SDL\SDL_hints.h" />
+    <ClInclude Include="..\include\SDL\SDL_joystick.h" />
+    <ClInclude Include="..\include\SDL\SDL_keyboard.h" />
+    <ClInclude Include="..\include\SDL\SDL_keycode.h" />
+    <ClInclude Include="..\include\SDL\SDL_loadso.h" />
+    <ClInclude Include="..\include\SDL\SDL_log.h" />
+    <ClInclude Include="..\include\SDL\SDL_main.h" />
+    <ClInclude Include="..\include\SDL\SDL_messagebox.h" />
+    <ClInclude Include="..\include\SDL\SDL_mouse.h" />
+    <ClInclude Include="..\include\SDL\SDL_mutex.h" />
+    <ClInclude Include="..\include\SDL\SDL_name.h" />
+    <ClInclude Include="..\include\SDL\SDL_opengl.h" />
+    <ClInclude Include="..\include\SDL\SDL_opengles.h" />
+    <ClInclude Include="..\include\SDL\SDL_opengles2.h" />
+    <ClInclude Include="..\include\SDL\SDL_pixels.h" />
+    <ClInclude Include="..\include\SDL\SDL_platform.h" />
+    <ClInclude Include="..\include\SDL\SDL_power.h" />
+    <ClInclude Include="..\include\SDL\SDL_quit.h" />
+    <ClInclude Include="..\include\SDL\SDL_rect.h" />
+    <ClInclude Include="..\include\SDL\SDL_render.h" />
+    <ClInclude Include="..\include\SDL\SDL_revision.h" />
+    <ClInclude Include="..\include\SDL\SDL_rwops.h" />
+    <ClInclude Include="..\include\SDL\SDL_scancode.h" />
+    <ClInclude Include="..\include\SDL\SDL_shape.h" />
+    <ClInclude Include="..\include\SDL\SDL_stdinc.h" />
+    <ClInclude Include="..\include\SDL\SDL_surface.h" />
+    <ClInclude Include="..\include\SDL\SDL_system.h" />
+    <ClInclude Include="..\include\SDL\SDL_syswm.h" />
+    <ClInclude Include="..\include\SDL\SDL_test.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_assert.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_common.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_compare.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_crc32.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_font.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_fuzzer.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_harness.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_images.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_log.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_md5.h" />
+    <ClInclude Include="..\include\SDL\SDL_test_random.h" />
+    <ClInclude Include="..\include\SDL\SDL_thread.h" />
+    <ClInclude Include="..\include\SDL\SDL_timer.h" />
+    <ClInclude Include="..\include\SDL\SDL_touch.h" />
+    <ClInclude Include="..\include\SDL\SDL_types.h" />
+    <ClInclude Include="..\include\SDL\SDL_version.h" />
+    <ClInclude Include="..\include\SDL\SDL_video.h" />
+    <ClInclude Include="..\include\utils\catch.hpp" />
+    <ClInclude Include="..\include\utils\cppformat\format.h" />
+    <ClInclude Include="..\include\utils\MathUtils.hpp" />
+    <ClInclude Include="..\include\utils\NextID.hpp" />
+    <ClInclude Include="..\include\utils\simdpp\altivec\load1.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\align.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\aligned_allocator.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\bit_and.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\bit_andnot.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\bit_not.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\bit_or.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\bit_xor.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\blend.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cache.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cast.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_eq.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_ge.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_gt.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_le.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_lt.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_neq.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\combine.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\detail\get_expr_bitwise.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\detail\get_expr_uint.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\detail\scalar_arg_impl.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\detail\vec_extract.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\detail\vec_insert.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\extract.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_abs.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_add.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_ceil.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_div.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_floor.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_fmadd.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_fmsub.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_isnan.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_isnan2.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_max.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_min.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_mul.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_neg.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_rcp_e.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_rcp_rh.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_rsqrt_e.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_rsqrt_rh.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_sign.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_sqrt.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_sub.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\f_trunc.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\insert.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_abs.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_add.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_add_sat.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_avg.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_avg_trunc.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_div_p.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_max.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_min.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_mul.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_mull.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_neg.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_shift_l.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_shift_r.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_sub.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\i_sub_sat.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\load.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\load_packed2.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\load_packed3.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\load_packed4.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\load_splat.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\load_u.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\make_float.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\make_int.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\make_shuffle_bytes_mask.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\make_uint.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\move_l.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\move_r.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\permute2.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\permute4.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\permute_bytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\permute_zbytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\set_splat.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle1.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle2.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle_bytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle_zbytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\splat.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\splat_n.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\split.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\store.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\store_first.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\store_last.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\store_packed2.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\store_packed3.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\store_packed4.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\stream.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\to_float32.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\to_float64.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\to_int16.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\to_int32.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\to_int64.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\to_int8.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\transpose.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\unzip_hi.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\unzip_lo.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\zip_hi.h" />
+    <ClInclude Include="..\include\utils\simdpp\core\zip_lo.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\align.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\align_v128.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\array.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\cast.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\cast_expr.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\construct_eval.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_and.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_andnot.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_not.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_or.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\blend.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_abs.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_add.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_fmadd.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_fmsub.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_mul.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_neg.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_sub.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_abs.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_add.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_add_sat.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_mul.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_mull.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_neg.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_sub.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_sub_sat.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\scalar.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\splat_n.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\vec.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\get_expr.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\align.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_and.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_andnot.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_not.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_or.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_xor.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\blend.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_eq.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_ge.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_gt.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_le.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_lt.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_neq.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\combine.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_ceil.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_div.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_floor.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_isnan.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_isnan2.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_max.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_min.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rcp_e.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rcp_rh.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rsqrt_e.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rsqrt_rh.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_sign.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_sqrt.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_trunc.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_avg.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_avg_trunc.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_max.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_min.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_shift.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_shift_l.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_shift_r.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_packed2.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_packed3.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_packed4.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_splat.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_u.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\make_const.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\mem_pack.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\mem_unpack.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\move_l.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\move_r.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute2.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute4.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute_bytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute_zbytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\set_splat.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle1.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle128.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle2.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle_bytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle_emul.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle_zbytes16.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\splat.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\splat_n.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\split.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_first.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_last.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_packed2.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_packed3.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_packed4.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\stream.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_float32.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_float64.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_int16.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_int32.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_int64.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\transpose.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\unzip_hi.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\unzip_lo.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\zip128.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\zip_hi.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\zip_lo.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\mem_block.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\not_implemented.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\bitwise.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\compare.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\foreach.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\mask.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\math.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\memory.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\set.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\shuffle.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\null\transpose.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\traits.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\width.h" />
+    <ClInclude Include="..\include\utils\simdpp\detail\workarounds.h" />
+    <ClInclude Include="..\include\utils\simdpp\dispatch\arch.h" />
+    <ClInclude Include="..\include\utils\simdpp\dispatch\dispatcher.h" />
+    <ClInclude Include="..\include\utils\simdpp\dispatch\get_arch_gcc_builtin_cpu_supports.h" />
+    <ClInclude Include="..\include\utils\simdpp\dispatch\get_arch_linux_cpuinfo.h" />
+    <ClInclude Include="..\include\utils\simdpp\dispatch\get_arch_raw_cpuid.h" />
+    <ClInclude Include="..\include\utils\simdpp\dispatch\macros.h" />
+    <ClInclude Include="..\include\utils\simdpp\expr.h" />
+    <ClInclude Include="..\include\utils\simdpp\neon\detail\shuffle_int16x8.h" />
+    <ClInclude Include="..\include\utils\simdpp\neon\detail\shuffle_int32x4.h" />
+    <ClInclude Include="..\include\utils\simdpp\neon\detail\shuffle_int64x2.h" />
+    <ClInclude Include="..\include\utils\simdpp\neon\math_int.h" />
+    <ClInclude Include="..\include\utils\simdpp\neon\memory_store.h" />
+    <ClInclude Include="..\include\utils\simdpp\neon\shuffle.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_and.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_not.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_or.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_xor.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_eq.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_ge.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_gt.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_le.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_lt.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_neq.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\f_add.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\f_div.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\f_mul.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\f_sub.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\i_add.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\i_mul.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\i_shift_l.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\i_shift_r.h" />
+    <ClInclude Include="..\include\utils\simdpp\operators\i_sub.h" />
+    <ClInclude Include="..\include\utils\simdpp\setup_arch.h" />
+    <ClInclude Include="..\include\utils\simdpp\simd.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\cache.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\compare.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\convert.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\extract_half.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\math_fp.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\math_int.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\memory_load.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\memory_store.h" />
+    <ClInclude Include="..\include\utils\simdpp\sse\shuffle.h" />
+    <ClInclude Include="..\include\utils\simdpp\this_compile_arch.h" />
+    <ClInclude Include="..\include\utils\simdpp\types.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\any.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float32.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float32x16.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float32x4.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float32x8.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float64.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float64x2.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float64x4.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\float64x8.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\fwd.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\generic.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int16.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int16x16.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int16x8.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int32.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int32x16.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int32x4.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int32x8.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int64.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int64x2.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int64x4.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int64x8.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int8.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int8x16.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\int8x32.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\tag.h" />
+    <ClInclude Include="..\include\utils\simdpp\types\traits.h" />
+    <ClInclude Include="..\include\utils\Singleton.hpp" />
+    <ClInclude Include="..\include\xml\pugiconfig.hpp" />
+    <ClInclude Include="..\include\xml\pugixml.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\utils\simdpp\detail\cast.inl" />
+    <None Include="..\include\utils\simdpp\README" />
+    <None Include="..\include\utils\simdpp\types\generic.inl" />
+    <None Include="..\include\utils\simdpp\types\README" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\cppformat\format.cc" />
+    <ClCompile Include="..\src\log\Log.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\nanovg\nanovg.c" />
+    <ClCompile Include="..\src\xml\pugixml.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

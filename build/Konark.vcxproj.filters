@@ -1,0 +1,1442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\containers">
+      <UniqueIdentifier>{9829064b-1515-4806-8cba-1dd13c3b0817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\containers\tree">
+      <UniqueIdentifier>{232c62ed-93e3-4c65-aea7-7aba2b8ac584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\log">
+      <UniqueIdentifier>{458adfa9-e830-421c-9db3-9eb3cc0f1857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\log\spdlog">
+      <UniqueIdentifier>{f53d7aad-0d8c-4692-88f6-6e06f86f521f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\log\spdlog\details">
+      <UniqueIdentifier>{43ade245-001b-461b-b92e-244d76f2e712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\log\spdlog\sinks">
+      <UniqueIdentifier>{4b9307ca-4098-490c-983d-96bf474bf284}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\math">
+      <UniqueIdentifier>{bcc0f5e6-1404-4388-a3fa-888896864937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\nanovg">
+      <UniqueIdentifier>{5c9e7c92-8fc9-42d2-b9ca-8bc35a0b5ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rapidjson">
+      <UniqueIdentifier>{38f13a8e-19a3-47b6-818c-eccade8e213c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rapidjson\error">
+      <UniqueIdentifier>{d4ac42a9-6653-450e-8ad1-518a860bda5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rapidjson\internal">
+      <UniqueIdentifier>{cddb256d-689b-4788-bce9-c57cf2021113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rapidjson\msinttypes">
+      <UniqueIdentifier>{0229c275-0cb6-45f9-9666-854ee655dd20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{006e2347-5bc5-479d-89fe-b14cd4ca2489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\cppformat">
+      <UniqueIdentifier>{66e3dea5-ae18-48cc-bc69-9cc6376c69d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp">
+      <UniqueIdentifier>{b6ef2b0f-36af-4dc9-90a7-748828aee40d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\altivec">
+      <UniqueIdentifier>{6ac99a7a-a7fe-46f2-993a-11cb5bad59c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\core">
+      <UniqueIdentifier>{dd97f6a6-2a24-44f8-be42-0d3496dd7083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\core\detail">
+      <UniqueIdentifier>{1cc082b6-a70d-4c2e-9858-a292ece91356}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\core\detail\detail">
+      <UniqueIdentifier>{50a65b9e-4097-48ae-9ff9-4ee69fcac22c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\detail">
+      <UniqueIdentifier>{d6c383bd-6435-4bf6-8e3f-72bb7082a9e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\detail\expr">
+      <UniqueIdentifier>{088f4631-9aa2-401b-be2d-ee750c84a015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\detail\insn">
+      <UniqueIdentifier>{b3351ba8-f90a-4898-a547-9d7148fb984e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\detail\null">
+      <UniqueIdentifier>{f9b9dcec-e84d-4c77-ad96-c46f67c3dcb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\dispatch">
+      <UniqueIdentifier>{2c60d22c-0e39-4cf1-8d00-b6a4562305f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\neon">
+      <UniqueIdentifier>{057f7f76-ba11-4706-b996-968979ddd0ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\neon\detail">
+      <UniqueIdentifier>{6ec79431-67ef-46fe-81ee-1509cbab11d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\operators">
+      <UniqueIdentifier>{18a5acc7-8720-431d-8f2e-f7489e0145ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\sse">
+      <UniqueIdentifier>{9bff4d56-ecd2-4a3c-b7e5-c58ba1c6bcfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils\simdpp\types">
+      <UniqueIdentifier>{bcd773a8-3d4b-4a61-abc1-0702b3dc3620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\xml">
+      <UniqueIdentifier>{9f2cb5fb-9798-4790-8668-692f902646b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sdl">
+      <UniqueIdentifier>{f8cc24a8-db40-41a1-bb14-dbafcf6e51c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cppformat">
+      <UniqueIdentifier>{cdc2b8ca-9928-46c5-adbd-63fe654495a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\log">
+      <UniqueIdentifier>{403a9324-a75b-4e88-b941-c7a98a955725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\nanovg">
+      <UniqueIdentifier>{f9769b21-1d32-4f44-a5f3-9fd74c128d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\xml">
+      <UniqueIdentifier>{d9ab3f8b-64d9-4352-9d74-bb1250920df2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\containers\tree\NTree.hpp">
+      <Filter>Header Files\containers\tree</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\async_logger.h">
+      <Filter>Header Files\log\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\common.h">
+      <Filter>Header Files\log\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\formatter.h">
+      <Filter>Header Files\log\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\logger.h">
+      <Filter>Header Files\log\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\spdlog.h">
+      <Filter>Header Files\log\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\async_log_helper.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\async_logger_impl.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\file_helper.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\line_logger.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\log_msg.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\logger_impl.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\mpmc_bounded_q.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\null_mutex.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\os.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\pattern_formatter_impl.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\registry.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\details\spdlog_impl.h">
+      <Filter>Header Files\log\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\base_sink.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\file_sinks.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\null_sink.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\ostream_sink.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\sink.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\stdout_sinks.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\spdlog\sinks\syslog_sink.h">
+      <Filter>Header Files\log\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\math\Matrix.hpp">
+      <Filter>Header Files\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\nanovg\fontstash.h">
+      <Filter>Header Files\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\nanovg\nanovg.h">
+      <Filter>Header Files\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\nanovg\nanovg_gl.h">
+      <Filter>Header Files\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\nanovg\nanovg_gl_utils.h">
+      <Filter>Header Files\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\nanovg\stb_image.h">
+      <Filter>Header Files\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\nanovg\stb_truetype.h">
+      <Filter>Header Files\nanovg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\allocators.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\document.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\encodedstream.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\encodings.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\filereadstream.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\filestream.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\filewritestream.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\memorybuffer.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\memorystream.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\prettywriter.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\rapidjson.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\reader.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\stringbuffer.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\writer.h">
+      <Filter>Header Files\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\error\en.h">
+      <Filter>Header Files\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\error\error.h">
+      <Filter>Header Files\rapidjson\error</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\biginteger.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\diyfp.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\dtoa.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\ieee754.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\itoa.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\meta.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\pow10.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\stack.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\strfunc.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\internal\strtod.h">
+      <Filter>Header Files\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\msinttypes\inttypes.h">
+      <Filter>Header Files\rapidjson\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\rapidjson\msinttypes\stdint.h">
+      <Filter>Header Files\rapidjson\msinttypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\catch.hpp">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\MathUtils.hpp">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\NextID.hpp">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\Singleton.hpp">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\cppformat\format.h">
+      <Filter>Header Files\utils\cppformat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\expr.h">
+      <Filter>Header Files\utils\simdpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\setup_arch.h">
+      <Filter>Header Files\utils\simdpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\simd.h">
+      <Filter>Header Files\utils\simdpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\this_compile_arch.h">
+      <Filter>Header Files\utils\simdpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types.h">
+      <Filter>Header Files\utils\simdpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\altivec\load1.h">
+      <Filter>Header Files\utils\simdpp\altivec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\align.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\aligned_allocator.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\bit_and.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\bit_andnot.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\bit_not.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\bit_or.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\bit_xor.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\blend.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cache.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cast.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_eq.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_ge.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_gt.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_le.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_lt.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\cmp_neq.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\combine.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\extract.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_abs.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_add.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_ceil.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_div.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_floor.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_fmadd.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_fmsub.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_isnan.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_isnan2.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_max.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_min.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_mul.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_neg.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_rcp_e.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_rcp_rh.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_rsqrt_e.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_rsqrt_rh.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_sign.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_sqrt.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_sub.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\f_trunc.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_abs.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_add.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_add_sat.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_avg.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_avg_trunc.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_div_p.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_max.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_min.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_mul.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_mull.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_neg.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_shift_l.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_shift_r.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_sub.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\i_sub_sat.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\insert.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\load.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\load_packed2.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\load_packed3.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\load_packed4.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\load_splat.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\load_u.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\make_float.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\make_int.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\make_shuffle_bytes_mask.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\make_uint.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\move_l.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\move_r.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\permute_bytes16.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\permute_zbytes16.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\permute2.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\permute4.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\set_splat.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle_bytes16.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle_zbytes16.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle1.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\shuffle2.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\splat.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\splat_n.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\split.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\store.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\store_first.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\store_last.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\store_packed2.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\store_packed3.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\store_packed4.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\stream.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\to_float32.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\to_float64.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\to_int8.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\to_int16.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\to_int32.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\to_int64.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\transpose.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\unzip_hi.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\unzip_lo.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\zip_hi.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\zip_lo.h">
+      <Filter>Header Files\utils\simdpp\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\detail\get_expr_bitwise.h">
+      <Filter>Header Files\utils\simdpp\core\detail\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\detail\get_expr_uint.h">
+      <Filter>Header Files\utils\simdpp\core\detail\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\detail\scalar_arg_impl.h">
+      <Filter>Header Files\utils\simdpp\core\detail\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\detail\vec_extract.h">
+      <Filter>Header Files\utils\simdpp\core\detail\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\core\detail\vec_insert.h">
+      <Filter>Header Files\utils\simdpp\core\detail\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\align.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\align_v128.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\array.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\cast.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\cast_expr.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\construct_eval.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\get_expr.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\mem_block.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\not_implemented.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\traits.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\width.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\workarounds.h">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_and.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_andnot.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_not.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\bit_or.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\blend.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_abs.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_add.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_fmadd.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_fmsub.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_mul.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_neg.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\f_sub.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_abs.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_add.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_add_sat.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_mul.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_mull.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_neg.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_sub.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\i_sub_sat.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\scalar.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\splat_n.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\expr\vec.h">
+      <Filter>Header Files\utils\simdpp\detail\expr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\align.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_and.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_andnot.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_not.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_or.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\bit_xor.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\blend.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_eq.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_ge.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_gt.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_le.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_lt.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\cmp_neq.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\combine.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_ceil.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_div.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_floor.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_isnan.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_isnan2.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_max.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_min.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rcp_e.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rcp_rh.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rsqrt_e.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_rsqrt_rh.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_sign.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_sqrt.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\f_trunc.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_avg.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_avg_trunc.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_max.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_min.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_shift.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_shift_l.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\i_shift_r.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_packed2.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_packed3.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_packed4.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_splat.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\load_u.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\make_const.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\mem_pack.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\mem_unpack.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\move_l.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\move_r.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute_bytes16.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute_zbytes16.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute2.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\permute4.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\set_splat.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle_bytes16.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle_emul.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle_zbytes16.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle1.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle2.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\shuffle128.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\splat.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\splat_n.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\split.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_first.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_last.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_packed2.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_packed3.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\store_packed4.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\stream.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_float32.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_float64.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_int16.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_int32.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\to_int64.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\transpose.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\unzip_hi.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\unzip_lo.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\zip_hi.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\zip_lo.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\insn\zip128.h">
+      <Filter>Header Files\utils\simdpp\detail\insn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\bitwise.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\compare.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\foreach.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\mask.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\math.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\memory.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\set.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\shuffle.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\detail\null\transpose.h">
+      <Filter>Header Files\utils\simdpp\detail\null</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\dispatch\arch.h">
+      <Filter>Header Files\utils\simdpp\dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\dispatch\dispatcher.h">
+      <Filter>Header Files\utils\simdpp\dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\dispatch\get_arch_gcc_builtin_cpu_supports.h">
+      <Filter>Header Files\utils\simdpp\dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\dispatch\get_arch_linux_cpuinfo.h">
+      <Filter>Header Files\utils\simdpp\dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\dispatch\get_arch_raw_cpuid.h">
+      <Filter>Header Files\utils\simdpp\dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\dispatch\macros.h">
+      <Filter>Header Files\utils\simdpp\dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\neon\math_int.h">
+      <Filter>Header Files\utils\simdpp\neon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\neon\memory_store.h">
+      <Filter>Header Files\utils\simdpp\neon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\neon\shuffle.h">
+      <Filter>Header Files\utils\simdpp\neon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\neon\detail\shuffle_int16x8.h">
+      <Filter>Header Files\utils\simdpp\neon\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\neon\detail\shuffle_int32x4.h">
+      <Filter>Header Files\utils\simdpp\neon\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\neon\detail\shuffle_int64x2.h">
+      <Filter>Header Files\utils\simdpp\neon\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_and.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_not.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_or.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\bit_xor.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_eq.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_ge.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_gt.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_le.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_lt.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\cmp_neq.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\f_add.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\f_div.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\f_mul.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\f_sub.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\i_add.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\i_mul.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\i_shift_l.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\i_shift_r.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\operators\i_sub.h">
+      <Filter>Header Files\utils\simdpp\operators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\cache.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\compare.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\convert.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\extract_half.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\math_fp.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\math_int.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\memory_load.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\memory_store.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\sse\shuffle.h">
+      <Filter>Header Files\utils\simdpp\sse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\any.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float32.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float32x4.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float32x8.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float32x16.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float64.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float64x2.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float64x4.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\float64x8.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\fwd.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\generic.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int8.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int8x16.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int8x32.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int16.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int16x8.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int16x16.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int32.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int32x4.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int32x8.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int32x16.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int64.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int64x2.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int64x4.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\int64x8.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\tag.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\utils\simdpp\types\traits.h">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xml\pugiconfig.hpp">
+      <Filter>Header Files\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xml\pugixml.hpp">
+      <Filter>Header Files\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\begin_code.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\close_code.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_assert.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_atomic.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_audio.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_bits.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_blendmode.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_clipboard.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_config.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_cpuinfo.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_endian.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_error.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_events.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_filesystem.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_gamecontroller.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_gesture.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_haptic.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_hints.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_joystick.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_keyboard.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_keycode.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_loadso.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_log.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_main.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_messagebox.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_mouse.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_mutex.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_name.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_opengl.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_opengles.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_opengles2.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_pixels.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_platform.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_power.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_quit.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_rect.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_render.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_revision.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_rwops.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_scancode.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_shape.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_stdinc.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_surface.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_system.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_syswm.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_assert.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_common.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_compare.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_crc32.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_font.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_fuzzer.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_harness.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_images.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_log.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_md5.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_test_random.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_thread.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_timer.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_touch.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_types.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_version.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL\SDL_video.h">
+      <Filter>Header Files\sdl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\log\Log.hpp">
+      <Filter>Header Files\log</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\include\utils\simdpp\README">
+      <Filter>Header Files\utils\simdpp</Filter>
+    </None>
+    <None Include="..\include\utils\simdpp\detail\cast.inl">
+      <Filter>Header Files\utils\simdpp\detail</Filter>
+    </None>
+    <None Include="..\include\utils\simdpp\types\generic.inl">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </None>
+    <None Include="..\include\utils\simdpp\types\README">
+      <Filter>Header Files\utils\simdpp\types</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\cppformat\format.cc">
+      <Filter>Source Files\cppformat</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\Log.cpp">
+      <Filter>Source Files\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\nanovg\nanovg.c">
+      <Filter>Source Files\nanovg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xml\pugixml.cpp">
+      <Filter>Source Files\xml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
