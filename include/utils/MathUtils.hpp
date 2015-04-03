@@ -4,8 +4,8 @@
 #include <boost/math/constants/constants.hpp>
 
 namespace blib {
-  namespace math {
-    namespace utils {
+  namespace utils {
+    namespace math {
       inline float toRadian( const float aDegree ) {
         return aDegree * ::boost::math::float_constants::degree;
       }

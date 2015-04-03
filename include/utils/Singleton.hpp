@@ -3,7 +3,13 @@
 
 #include <boost/noncopyable.hpp>
 #include <memory>
-#include <mutex>
+//#include <mutex>
+
+// TO-DO
+// Use following
+// http://enki-tech.blogspot.in/2012/08/c11-generic-singleton.html
+// http://preshing.com/20130930/double-checked-locking-is-fixed-in-cpp11/
+// https://www10.informatik.uni-erlangen.de/Teaching/Courses/SS2010/CPP/sembritzki.pdf
 
 namespace blib {
   namespace utils {
@@ -14,15 +20,15 @@ namespace blib {
       typedef Singleton<ThisClass> SelfType;
      
     public:
-      static ThisClass* i( ) {
+      static ThisClass& i( ) {
         if ( !_i ) {
-          std::unique_lock<std::mutex> lock( m );
+ //         std::unique_lock<std::mutex> lock( m );
           if ( !_i ) {
             _i = std::make_unique<ThisClass>( );
           }
         }
 
-        return _i;
+        return *_i;
       }
       static std::unique_ptr<ThisClass> _i;
     };
