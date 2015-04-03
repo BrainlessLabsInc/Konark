@@ -118,6 +118,9 @@
     <Filter Include="Source Files\xml">
       <UniqueIdentifier>{d9ab3f8b-64d9-4352-9d74-bb1250920df2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\render">
+      <UniqueIdentifier>{57e895b2-f257-4f95-b651-12e0fa32592a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\containers\tree\NTree.hpp">
@@ -1406,6 +1409,9 @@
     </ClInclude>
     <ClInclude Include="..\include\log\Log.hpp">
       <Filter>Header Files\log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\render\sdl.hpp">
+      <Filter>Header Files\render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

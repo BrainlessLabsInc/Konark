@@ -71,12 +71,12 @@
       <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2test.lib;SDL2main.lib;SDL2.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;glew32.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -142,6 +142,7 @@
     <ClInclude Include="..\include\rapidjson\reader.h" />
     <ClInclude Include="..\include\rapidjson\stringbuffer.h" />
     <ClInclude Include="..\include\rapidjson\writer.h" />
+    <ClInclude Include="..\include\render\sdl.hpp" />
     <ClInclude Include="..\include\SDL\begin_code.h" />
     <ClInclude Include="..\include\SDL\close_code.h" />
     <ClInclude Include="..\include\SDL\SDL.h" />
@@ -519,7 +520,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\cppformat\format.cc" />
-    <ClCompile Include="..\src\log\Log.cpp" />
+    <ClInclude Include="..\src\log\Log.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\nanovg\nanovg.c" />
     <ClCompile Include="..\src\xml\pugixml.cpp" />
