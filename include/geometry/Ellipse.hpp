@@ -8,6 +8,8 @@ namespace blib {
   namespace geometry {
 
     // Ellipse implementation. This can implement a circle too
+    // Circle can be a special type of ellise
+    // http://en.wikipedia.org/wiki/Circle-ellipse_problem
     class Ellipse : public bgeom::model::ring < Point2D > {
     public:
       typedef ::boost::geometry::traits::coordinate_type< ::blib::geometry::Point2D >::type ValueType;
