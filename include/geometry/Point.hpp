@@ -3,13 +3,12 @@
 
 #include <boost/geometry/geometries/geometries.hpp>
 #include "math/Matrix.hpp"
+#include "CoordinateConfigure.hpp"
 
 namespace blib {
   namespace geometry {
     namespace bgeom = ::boost::geometry;
     using ::blib::math::RowVector3f;
-
-    typedef float CoordinateType;
 
     // 2D Point Type
     class Point2D {

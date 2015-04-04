@@ -44,7 +44,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\bin</OutDir>
+    <OutDir>$(SolutionDir)..\bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -76,12 +76,17 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;glew32.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;glew32.lib;SDL2main.lib;Opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\containers\tree\NTree.hpp" />
+    <ClInclude Include="..\include\geometry\BasicGeometries.hpp" />
+    <ClInclude Include="..\include\geometry\CoordinateConfigure.hpp" />
+    <ClInclude Include="..\include\geometry\Ellipse.hpp" />
+    <ClInclude Include="..\include\geometry\Point.hpp" />
+    <ClInclude Include="..\include\geometry\TransformMatrix.hpp" />
     <ClInclude Include="..\include\log\Log.hpp" />
     <ClInclude Include="..\include\log\spdlog\async_logger.h" />
     <ClInclude Include="..\include\log\spdlog\common.h" />
@@ -142,6 +147,8 @@
     <ClInclude Include="..\include\rapidjson\reader.h" />
     <ClInclude Include="..\include\rapidjson\stringbuffer.h" />
     <ClInclude Include="..\include\rapidjson\writer.h" />
+    <ClInclude Include="..\include\render\Attributes.hpp" />
+    <ClInclude Include="..\include\render\Nanovg.hpp" />
     <ClInclude Include="..\include\render\sdl.hpp" />
     <ClInclude Include="..\include\SDL\begin_code.h" />
     <ClInclude Include="..\include\SDL\close_code.h" />
@@ -209,8 +216,10 @@
     <ClInclude Include="..\include\SDL\SDL_video.h" />
     <ClInclude Include="..\include\utils\catch.hpp" />
     <ClInclude Include="..\include\utils\cppformat\format.h" />
+    <ClInclude Include="..\include\utils\format.hpp" />
     <ClInclude Include="..\include\utils\MathUtils.hpp" />
     <ClInclude Include="..\include\utils\NextID.hpp" />
+    <ClInclude Include="..\include\utils\PropertyMap.hpp" />
     <ClInclude Include="..\include\utils\simdpp\altivec\load1.h" />
     <ClInclude Include="..\include\utils\simdpp\core\align.h" />
     <ClInclude Include="..\include\utils\simdpp\core\aligned_allocator.h" />
@@ -513,17 +522,19 @@
     <ClInclude Include="..\include\xml\pugixml.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\include\utils\cppformat\format.inl" />
     <None Include="..\include\utils\simdpp\detail\cast.inl" />
     <None Include="..\include\utils\simdpp\README" />
     <None Include="..\include\utils\simdpp\types\generic.inl" />
     <None Include="..\include\utils\simdpp\types\README" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\cppformat\format.cc" />
-    <ClInclude Include="..\src\log\Log.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\nanovg\nanovg.c" />
     <ClCompile Include="..\src\xml\pugixml.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\StudyMaterial\Reference.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
