@@ -88,6 +88,14 @@ namespace blib {
       CoordinateType searY( )const {
         return this->BaseType::operator( )( 1, 0 );
       }
+
+      BaseType& mat( ) {
+        return *this;
+      }
+
+      operator BaseType( ) {
+        return mat();
+      }
     };
   }
 }

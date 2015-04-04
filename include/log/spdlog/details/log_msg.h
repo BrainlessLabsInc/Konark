@@ -25,7 +25,7 @@
 #pragma once
 
 #include "../common.h"
-#include "utils/cppformat/format.h"
+#include "utils/format.hpp"
 
 namespace spdlog {
   namespace details {
