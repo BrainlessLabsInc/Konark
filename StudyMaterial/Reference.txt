@@ -1,3 +1,7 @@
 Geometry
 ===========
 http://en.wikipedia.org/wiki/Circle-ellipse_problem
+
+Containers
+===========
+http://stlplus.sourceforge.net/
