@@ -4,11 +4,12 @@
 #include <boost/geometry/geometries/geometries.hpp>
 #include "math/Matrix.hpp"
 #include "CoordinateConfigure.hpp"
+#include <cmath>
 
 namespace blib {
   namespace geometry {
     namespace bgeom = ::boost::geometry;
-    using ::blib::math::RowVector3f;
+    typedef ::blib::math::RowVector3f Vec3f;;
 
     // 2D Point Type
     class Point2D {
@@ -19,16 +20,8 @@ namespace blib {
       ValueType _coordinates[ 2 ];
 
     public:
-      /// Default constructor, does not initialize anything
-      Point2D( ) {
-        _coordinates[ 0 ] = 0;
-        _coordinates[ 1 ] = 0;
-      }
-
-      Point2D( const CoordinateType aX, const CoordinateType aY ) {
-        _coordinates[ 0 ] = aX;
-        _coordinates[ 1 ] = aY;
-      }
+      Point2D( const CoordinateType aX = 0, const CoordinateType aY = 0 ) :
+        _coordinates{ aX, aY } {}
 
       void x( const CoordinateType aX ) {
         _coordinates[ 0 ] = aX;
@@ -46,9 +39,21 @@ namespace blib {
         return _coordinates[ 1 ];
       }
 
-      // Convert to a RowVector3f
-      operator RowVector3f( ) const {
-        RowVector3f ret( _coordinates[ 0 ], _coordinates[ 1 ], 1 );
+      // Convert to a Vec3f
+      operator Vec3f( ) const {
+        Vec3f ret( _coordinates[ 0 ], _coordinates[ 1 ], 1 );
+        return ret;
+      }
+
+      CoordinateType magnitude( ) const {
+        const auto ret = std::sqrt( squarMagnitude( ) );
+        return ret;
+      }
+
+      CoordinateType squarMagnitude( ) const {
+        const auto x = _coordinates[ 0 ];
+        const auto y = _coordinates[ 1 ];
+        const auto ret = x*x + y*y;
         return ret;
       }
     };
