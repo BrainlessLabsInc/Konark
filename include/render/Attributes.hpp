@@ -16,6 +16,10 @@ namespace blib {
       };
 
       Color( ) :_r( 0 ), _g( 0 ), _b( 0 ), _a( 0 ) {}
+
+      Color& operator=( Color const& aOther ) {
+        _r = aOther._r; _g = aOther._g; _b = aOther._b; _a = aOther._a;
+      }
     };
 
     struct StrokeWidth {
@@ -175,6 +179,7 @@ namespace blib {
     class Group {
     public:
       typedef std::string IdType;
+
     private:
       IdType _id;
 

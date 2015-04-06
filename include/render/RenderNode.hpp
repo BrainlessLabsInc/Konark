@@ -31,14 +31,14 @@ namespace blib {
       MitterLimit,
       StrokeStyle,
       FillStyle,
-      bgeom::TransformMatrix,
-      RoundedEdgeAttrib
-    > Attribute;
-    typedef ::std::vector<Attribute> Attributes;
+      RoundedEdgeAttrib > RenderAttribute;
+
+    typedef ::std::vector<RenderAttribute> RenderAttributes;
 
     typedef ::boost::variant <
       MultiGeometry,
-      Attributes,
+      RenderAttributes,
+      bgeom::TransformMatrix,
       Group> RenderNode;
   }
 }
