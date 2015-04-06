@@ -10,3 +10,10 @@ www-h.eng.cam.ac.uk/help/tpl/talks/C++graphs.html
 MVC and like
 =============
 http://notus.sourceforge.net/notusguide.pdf
+
+CPU Info
+========
+
+C++ Config Macros
+=================
+http://sourceforge.net/p/predef/wiki/Home/

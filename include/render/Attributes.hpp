@@ -24,8 +24,10 @@ namespace blib {
 
     struct StrokeWidth {
       typedef ::blib::geometry::CoordinateType StrokeWidthType;
+
     private:
       StrokeWidthType _strokeWidth;
+
     public:
       StrokeWidth( const StrokeWidthType aStrokeWidth = 1. ) :
         _strokeWidth( aStrokeWidth ) {}
@@ -46,8 +48,10 @@ namespace blib {
         kSquare,
         kRound
       };
+
     private:
       LineCapTypes _lineCap;
+
     public:
       LineCapStyle( const LineCapTypes aLineCap = LineCapTypes::kButt ) :
         _lineCap( aLineCap ) {}
@@ -68,8 +72,10 @@ namespace blib {
         kRound,
         kMiter
       };
+
     private:
       LineJoinTypes _lineJoin;
+
     public:
       LineJoinStyles( const LineJoinTypes aLineJoin = LineJoinTypes::kBevel ) :
         _lineJoin( aLineJoin ) {}
@@ -86,8 +92,10 @@ namespace blib {
     class MitterLimit {
     public:
       typedef ::blib::geometry::CoordinateType MitterLimitType;
+
     private:
       MitterLimitType _mitterLimit;
+
     public:
       MitterLimit( const MitterLimitType aMitterLimit = 10. ) :
         _mitterLimit( aMitterLimit ) {}
@@ -104,6 +112,7 @@ namespace blib {
     class StrokeStyle {
     private:
       Color _strokeColor;
+
     public:
       StrokeStyle( Color const& aColor = Color( ) ) :_strokeColor( aColor ) {}
 
@@ -123,6 +132,7 @@ namespace blib {
     class FillStyle {
     private:
       Color _fillColor;
+
     public:
       FillStyle( Color const& aColor = Color( ) ) :
         _fillColor( aColor ) {}
@@ -143,9 +153,11 @@ namespace blib {
     class RoundedEdgeAttrib {
     public:
       typedef ::blib::geometry::CoordinateType CoordinateType;
+
     private:
       CoordinateType _rx;
       CoordinateType _ry;
+
     public:
       RoundedEdgeAttrib( ) :
         _rx( 0 ),
@@ -185,7 +197,9 @@ namespace blib {
 
     public:
       Group( IdType const & aId ) : _id( aId ) {}
+
       ~Group( ) {}
+
       IdType id( ) const {
         return _id;
       }
