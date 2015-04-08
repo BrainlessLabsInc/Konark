@@ -59,6 +59,38 @@ namespace blib {
 
       return ret;
     }
+
+    inline Color stringToColor( ::std::string& aColor ) {
+      std::string hexVal = aColor;
+      auto itr = aColor.begin( );
+
+      if ( *itr != '#' ) {
+        hexVal = colorNameToHex( aColor );
+        itr = hexVal.begin( );
+      }
+
+      Color rgba;
+
+      ::std::string rs;
+      ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( rs ) );
+      rgba._r = ::boost::lexical_cast< decltype( Color::_r ) >( rs );
+
+      ::std::string gs;
+      ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( gs ) );
+      rgba._g = ::boost::lexical_cast< decltype( Color::_g ) >( gs );
+
+      ::std::string bs;
+      ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( bs ) );
+      rgba._b = ::boost::lexical_cast< decltype( Color::_b ) >( bs );
+
+      if ( aColor.size( ) == 9 ) {
+        ::std::string as;
+        ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( as ) );
+        rgba._a = ::boost::lexical_cast< decltype( Color::_a ) >( as );
+      }
+
+      return rgba;
+    }
   }
 }
 

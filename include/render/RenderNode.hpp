@@ -22,7 +22,8 @@ namespace blib {
       bgeom::Ring,
       bgeom::Segment,
       bgeom::ReferringSegment,
-      bgeom::Ellipse> MultiGeometry;
+      bgeom::Ellipse,
+      bgeom::Circle > MultiGeometry;
 
     typedef ::boost::variant <
       StrokeWidth,
@@ -39,7 +40,7 @@ namespace blib {
       MultiGeometry,
       RenderAttributes,
       bgeom::TransformMatrix,
-      Group> RenderNode;
+      Group > RenderNodeData;
   }
 }
 
