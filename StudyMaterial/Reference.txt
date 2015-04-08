@@ -17,3 +17,13 @@ CPU Info
 C++ Config Macros
 =================
 http://sourceforge.net/p/predef/wiki/Home/
+
+
+Design Style
+============
+https://www.youtube.com/watch?v=jSNcGeMObb4
+
+A list of open source C++ libraries
+===================================
+http://en.cppreference.com/w/cpp/links/libs
+https://github.com/fffaraz/awesome-cpp
