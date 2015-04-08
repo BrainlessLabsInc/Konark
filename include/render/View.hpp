@@ -90,13 +90,22 @@ namespace blib {
 
       void loop( ) {
         EventType e = _d.pollEvent( );
-        while ( s.next( e ) ) {
+        // Iterate till scene manager has a next state
+        // Scene manager will be passed the event for manipulation
+        // The next state will be dependent on the event received too
+        while ( _s.next( e ) ) {
+          // Clear the screne
           clear( );
+          // Start drawing
           beginDraw( );
+          // Process all the rendering elements
           for ( const RenderElementType re : _s.renderElements( ) ) {
+            // Each node from the scene should be passed to the renderer to process
             _r.apply( re );
           }
+          // End drawing
           endDraw( );
+          // Poll for the next event
           e = _d.pollEvent( );
         }
       }

@@ -3,6 +3,7 @@
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/qi_char_.hpp>
+#include <boost/iterator/iterator_facade.hpp>
 #include "containers/tree/NTree.hpp"
 #include "RenderNode.hpp"
 #include "RenderUtils.hpp"
@@ -51,7 +52,7 @@ namespace blib {
           return ret;
         }
       private:
-        // Create a shape node
+        // Create a complete shape node
         Node createShapeNode( ::pugi::xml_node const& aShapeSVGNode ) {
 
           const auto geomType = stringToGeometryTypesEnum( aShapeSVGNode.name( ) );
@@ -268,6 +269,57 @@ namespace blib {
           return retVal;
         }
       };
+
+      // Iterator for the scene manager
+      template<typename _BasicSceneManager>
+      class basic_scene_iterator :
+        public boost::iterator_facade < basic_scene_iterator<_BasicSceneManager>, typename _BasicSceneManager::RenderData, boost::forward_traversal_tag > {
+      private:
+        typedef _BasicSceneManager BasicSceneManager;
+        typedef typename BasicSceneManager::RenderData RenderData;
+        typedef typename BasicSceneManager::Tree Tree;
+        typedef typename Tree::pre_order_iterator pre_order_iterator;
+        friend class boost::iterator_core_access;
+
+      public:
+        typedef basic_scene_iterator<BasicSceneManager> SelfType;
+
+      private:
+        Tree _t;
+        pre_order_iterator _it;
+
+      public:
+        basic_scene_iterator( ) {}
+
+        basic_scene_iterator( basic_scene_iterator const& aOther ) :
+          _t( aOther._t ),
+          _it( aOther._it ) {
+
+        }
+
+        basic_scene_iterator( const Tree& aTree ) :
+          _t( aTree ) {
+          _it = aTree.pre_order_begin( );
+        }
+
+        SelfType& operator = ( SelfType const& aOther ) {
+          _t = aOther._t;
+          _it = aOther._it;
+        }
+
+      private:
+        void increment( ) {
+          ++_it;
+        }
+
+        bool equal( SelfType const& aOther ) const {
+          return _it == aOther._it;
+        }
+
+        RenderData& dereference( ) const {
+          return *_it;
+        }
+      };
     } // _private
 
     // Basic scene manager. Just a flat tree
@@ -275,11 +327,15 @@ namespace blib {
     private:
       typedef _private::Node Node;
       typedef _private::Tree Tree;
+      typedef _private::SVGReader SVGReader;
+      typedef _private::basic_scene_iterator<BasicSceneManager> basic_scene_iterator;
+      typedef RenderNodeData RenderData;
+
+      friend class basic_scene_iterator;
 
     private:
       Tree _t;
-      _private::SVGReader svgReader;
-    private:
+      SVGReader svgReader;
 
     public:
       BasicSceneManager( ) {
@@ -290,6 +346,16 @@ namespace blib {
       void addModel( std::string const& aFileName ) {
         const auto node = svgReader.createGroupNode( aFileName );
         _t.root( ).addChild( node );
+      }
+
+      basic_scene_iterator basic_scene_begin( ) {
+        const basic_scene_iterator ret( _t );
+        return ret;
+      }
+
+      basic_scene_iterator basic_scene_end( ) {
+        const basic_scene_iterator ret;
+        return ret;
       }
     };
   }
