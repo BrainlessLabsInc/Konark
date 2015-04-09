@@ -3,7 +3,6 @@
 
 #include "utils/MathUtils.hpp"
 #include "math/Matrix.hpp"
-#include "geometry/Point.hpp"
 
 namespace blib {
   namespace geometry {

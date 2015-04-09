@@ -23,7 +23,14 @@ Design Style
 ============
 https://www.youtube.com/watch?v=jSNcGeMObb4
 
+
 A list of open source C++ libraries
 ===================================
 http://en.cppreference.com/w/cpp/links/libs
 https://github.com/fffaraz/awesome-cpp
+
+
+Entity Model
+============
+http://cowboyprogramming.com/2007/01/05/evolve-your-heirachy/
+https://github.com/alecthomas/entityx

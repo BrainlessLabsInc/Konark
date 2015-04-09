@@ -2,7 +2,7 @@
 #define BLIB_POINT_HPP
 
 #include <boost/geometry/geometries/geometries.hpp>
-#include "math/Matrix.hpp"
+#include "TransformMatrix.hpp"
 #include "CoordinateConfigure.hpp"
 #include <cmath>
 #include <array>
@@ -25,7 +25,7 @@ namespace blib {
 
     public:
       Point2D( const ValueType aX = 0, const ValueType aY = 0 ) :
-        _coordinates({ { aX, aY } }) {}
+        _coordinates( { { aX, aY } } ) {}
 
       void x( const ValueType aX ) {
         _coordinates[ 0 ] = aX;
@@ -51,10 +51,26 @@ namespace blib {
         return _coordinates[ 1 ];
       }
 
-      // Convert to a Vec3f
-      operator Vec3f( ) const {
+      Vec3f vec3f( ) const {
         const Vec3f ret( _coordinates[ 0 ], _coordinates[ 1 ], 1 );
         return ret;
+      }
+      // Convert to a Vec3f
+      operator Vec3f( ) const {
+        return vec3f( );
+      }
+
+      SelfType& operator=( Vec3f& aOther ) {
+        _coordinates[ 0 ] = aOther( 0 );
+        _coordinates[ 1 ] = aOther( 1 );
+        return *this;
+      }
+
+      SelfType& apply( TransformMatrix& aMat ) {
+        const Vec3f v( _coordinates[ 0 ], _coordinates[ 1 ], 1 );
+        const auto& p = aMat.mat( ) * v;
+        _coordinates[ 0 ] = p( 0 );
+        _coordinates[ 1 ] = p( 1 );
       }
 
       ValueType magnitude( ) const {
@@ -174,5 +190,11 @@ namespace boost {
     }
   }
 } // namespace boost::geometry::traits
+
+// Overloading the operators
+blib::geometry::Point2D operator*( blib::geometry::TransformMatrix & aTransformMatrix, blib::geometry::Point2D& aPoint ) {
+  const auto p = aTransformMatrix.mat( ) * aPoint.vec3f( );
+  blib::geometry::Point2D point( p( 0 ), p( 1 ) );
+}
 
 #endif // BLIB_POINT_HPP
