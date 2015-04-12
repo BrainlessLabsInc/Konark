@@ -11,7 +11,7 @@
 namespace blib {
   namespace geometry {
     namespace bgeom = ::boost::geometry;
-    typedef ::blib::math::RowVector3f Vec3f;;
+    typedef ::blib::math::Vector3f Vec3f;;
 
     // 2D Point Type
     class Point2D : public boost::field_operators < Point2D > {

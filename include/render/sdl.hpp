@@ -4,10 +4,50 @@
 #include <glew/glew.h>
 #include <SDL/SDL.h>
 #include "log/Log.hpp"
+#include <memory>
 
 namespace blib {
   namespace render {
     namespace sdl {
+      class Event {
+      public:
+        typedef SDL_Event EventType;
+        typedef std::shared_ptr<EventType> EventTypePtr;
+
+      private:
+        EventTypePtr _event;
+
+      public:
+        Event( ) {
+          _event = std::make_shared<SDL_Event>( );
+        }
+
+        Event( Event const& aOther ) {
+          _event = aOther._event;
+        }
+
+        Event& operator=( Event const& aOther ) {
+          _event = aOther._event;
+          return *this;
+        }
+
+        ~Event( ) {
+
+        }
+
+        bool operator==( Event const& aOther ) {
+          return aOther._event == _event;
+        }
+
+        EventType& event( ) {
+          return *_event;
+        }
+
+        EventTypePtr& eventPtr( ) {
+          return _event;
+        }
+      };
+
       class SDL {
       public:
         typedef float ValueType;
@@ -18,6 +58,7 @@ namespace blib {
         SDL_GLContext _maincontext;
         SDL_Surface* _surfDisplay;
         SDL_Window* _window;
+
       public:
         SDL( ) :
           _surfDisplay( nullptr ),
@@ -35,14 +76,15 @@ namespace blib {
           _devicePixelRatio = aDevicePixelRatio;
 
           if ( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ) {
+            l( ).error( "Could not init SDL" );
             return false;
           }
           // Declare display mode structure to be filled in.
           SDL_DisplayMode current = { { 0 } };
 
           if ( 0 == SDL_GetCurrentDisplayMode( 0, &current ) ) {
-            _width = current.w;
-            _height = current.h;
+            _width = static_cast< ValueType >( current.w );
+            _height = static_cast< ValueType >( current.h );
           }
 
           SDL_GL_SetAttribute( SDL_GL_CONTEXT_MAJOR_VERSION, 3 );
@@ -58,10 +100,11 @@ namespace blib {
           _window = SDL_CreateWindow( "Konark",
                                       SDL_WINDOWPOS_CENTERED,
                                       SDL_WINDOWPOS_CENTERED,
-                                      _width,
-                                      _height,
+                                      static_cast< int >( _width ),
+                                      static_cast< int >( _height ),
                                       SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS );
           if ( !_window ) {
+            l( ).error( "Could not create window" );
             cleanup( );
             return false;
           }
@@ -69,6 +112,7 @@ namespace blib {
           _maincontext = SDL_GL_CreateContext( _window );
           if ( !_maincontext ) {
             cleanup( );
+            l( ).error( "Could not create context" );
             return false;
           }
           glewExperimental = GL_TRUE;
@@ -107,9 +151,31 @@ namespace blib {
           clear( );
         }
 
+        bool loop( ) {
+          //SDL_Event Event = { 0 };
+
+          //while ( _running ) {
+          //  while ( SDL_PollEvent( &Event ) ) {
+          //    OnEvent( &Event );
+          //  }
+
+          //  OnLoop( );
+          //  OnRender( );
+          //}
+
+          //return 0;
+        }
+
         void endDraw( ) {
           /* Swap our back buffer to the front */
           SDL_GL_SwapWindow( _window );
+        }
+
+        Event pollEvent( ) {
+          Event ret;
+          auto& event = ret.eventPtr( );
+          SDL_PollEvent( event.get( ) );
+          return ret;
         }
       };
     }

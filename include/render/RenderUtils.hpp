@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <string>
 #include <boost/algorithm/hex.hpp>
-#include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string/case_conv.hpp>
 #include <boost/algorithm/string/trim.hpp>
 
@@ -60,33 +59,45 @@ namespace blib {
       return ret;
     }
 
-    inline Color stringToColor( ::std::string& aColor ) {
-      std::string hexVal = aColor;
+    inline Color stringToColor( std::string& aColor ) {
       auto itr = aColor.begin( );
 
       if ( *itr != '#' ) {
-        hexVal = colorNameToHex( aColor );
+        auto hexVal = colorNameToHex( aColor );
         itr = hexVal.begin( );
       }
 
       Color rgba;
+      ++itr; // Get past the #
+      std::string num;
+      num.push_back( *itr ); ++itr;
+      num.push_back( *itr ); ++itr;
+      std::vector<char> out;
+      out.reserve( 1 );
+      boost::algorithm::unhex( num, std::back_inserter( out ) );
+      rgba._r = out.at( 0 );
 
-      ::std::string rs;
-      ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( rs ) );
-      rgba._r = ::boost::lexical_cast< decltype( Color::_r ) >( rs );
+      num.clear( );
+      out.clear( );
+      num.push_back( *itr ); ++itr;
+      num.push_back( *itr ); ++itr;
+      boost::algorithm::unhex( num, std::back_inserter( out ) );
+      rgba._g = out.at( 0 );
 
-      ::std::string gs;
-      ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( gs ) );
-      rgba._g = ::boost::lexical_cast< decltype( Color::_g ) >( gs );
-
-      ::std::string bs;
-      ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( bs ) );
-      rgba._b = ::boost::lexical_cast< decltype( Color::_b ) >( bs );
+      num.clear( );
+      out.clear( );
+      num.push_back( *itr ); ++itr;
+      num.push_back( *itr ); ++itr;
+      boost::algorithm::unhex( num, std::back_inserter( out ) );
+      rgba._b = out.at( 0 );
 
       if ( aColor.size( ) == 9 ) {
-        ::std::string as;
-        ::boost::algorithm::unhex( ++itr, ++itr, ::std::back_inserter( as ) );
-        rgba._a = ::boost::lexical_cast< decltype( Color::_a ) >( as );
+        num.clear( );
+        out.clear( );
+        num.push_back( *itr ); ++itr;
+        num.push_back( *itr ); ++itr;
+        boost::algorithm::unhex( num, std::back_inserter( out ) );
+        rgba._a = out.at( 0 );
       }
 
       return rgba;

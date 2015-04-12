@@ -8,17 +8,45 @@
 namespace blib {
   namespace render {
     struct Color {
+    public:
+      typedef ::blib::geometry::CoordinateType ValueType;
+
       union {
-        ::blib::geometry::CoordinateType _rgba[ 4 ];
+        ValueType _rgba[ 4 ];
         struct {
-          ::blib::geometry::CoordinateType _r, _g, _b, _a;
+          ValueType _r, _g, _b, _a;
         };
       };
 
-      Color( ) :_r( 0 ), _g( 0 ), _b( 0 ), _a( 0 ) {}
+      Color( ) :_r( 0 ), _g( 0 ), _b( 0 ), _a( 1 ) {}
+
+      Color( ValueType aR, ValueType aG, ValueType aB, ValueType aA = 1 ) :
+        _r( aR ), _g( aG ), _b( aB ), _a( aA ) {}
+
+      Color( Color const& aOther ) {
+        _r = aOther._r;
+        _g = aOther._g;
+        _b = aOther._b;
+        _a = aOther._a;
+      }
 
       Color& operator=( Color const& aOther ) {
-        _r = aOther._r; _g = aOther._g; _b = aOther._b; _a = aOther._a;
+        _r = aOther._r;
+        _g = aOther._g;
+        _b = aOther._b;
+        _a = aOther._a;
+        return *this;
+      }
+
+      bool operator==( Color const& aOther ) {
+        bool ret = false;
+        if ( aOther._r == _r &&
+             aOther._g == _g &&
+             aOther._b == _b &&
+             aOther._a == _a ) {
+          ret = true;
+        }
+        return ret;
       }
     };
 

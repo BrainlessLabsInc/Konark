@@ -27,19 +27,16 @@ namespace blib {
 
           Node ret;
           if ( result ) {
-            for ( auto shape : doc.children( "g" ) ) {
-              const auto node = createShapeNode( shape );
-              if ( node ) {
-                const blib::render::Group group( "test" );
-                ret.data( group );
-                ret.addChild( node );
-              }
+            const blib::render::Group group( aFileName );
+            ret.data( group );
 
-              //_private::SceneGraphNodeDataTypesPtr g( new SceneGraphNodeDataTypes );
-              //::std::shared_ptr<ModelGroupId> grpId( new ModelGroupId );
-              //*g = grpId;
-              //ret.insert( g );
-              //ret.push_back( node );
+            for ( auto g : doc.children( "g" ) ) {
+              for ( auto shape : g.children( ) ) {
+                const auto shapeNode = createShapeNode( shape );
+                if ( shapeNode ) {
+                  ret.addChild( shapeNode );
+                }
+              }
             }
           }
           else {
@@ -78,7 +75,7 @@ namespace blib {
 
           Node ret;
           if ( !attribNode ) {
-            attribNode.data( geomNode );
+            attribNode.addChild( geomNode );
             ret = attribNode;
           }
           else {
@@ -163,6 +160,10 @@ namespace blib {
           }
 
           const MultiGeometry geom = polygon;
+          Node ret;
+          ret.data( geom );
+
+          return ret;
         }
 
         // Create Ellipse node
@@ -218,7 +219,8 @@ namespace blib {
             else if ( attrName == "stroke" ) {
               std::string color = attr.value( );
               StrokeStyle strokeAttrib;
-              strokeAttrib.strokeColor( blib::render::stringToColor( color ) );
+              const auto stroke = blib::render::stringToColor( color );
+              strokeAttrib.strokeColor( stroke );
               renderAttributes.push_back( strokeAttrib );
             }
             else if ( attrName == "fill" ) {
@@ -240,7 +242,7 @@ namespace blib {
         }
 
         // This will parse points like 200,10 250,190 160,210
-        ::std::vector<bgeom::Point2D> parsePoints( std::string const& aPointString ) {
+        std::vector<bgeom::Point2D> parsePoints( std::string const& aPointString ) {
           using namespace boost::spirit;
           using namespace boost::spirit::qi;
           using qi::phrase_parse;
@@ -249,14 +251,26 @@ namespace blib {
           bgeom::Point2D point;
           auto it = aPointString.begin( );
           typedef ::boost::geometry::traits::coordinate_type< ::blib::geometry::Point2D >::type PointValueType;
+          // To capture a single point like 23
+          const auto for1 = [ &point ]
+            ( const PointValueType aVal ) {
+            point.x( aVal );
+          };
+          // Capture something like 23,24,..
+          const auto forMore = [ &point, &retVal ]
+            ( const PointValueType aVal ) {
+            point.y( aVal );
+            retVal.push_back( point );
+          };
+
           const bool r = qi::phrase_parse( it,
                                            aPointString.end( ),
                                            // Begin Grammar
                                            (
                                            *( // Repeat this grammar
-                                           float_[ ( [ &point ]( const PointValueType aVal ) {point.x( aVal ); } ) ]
+                                           float_[ for1 ]
                                            >> char_( ',' )
-                                           >> float_[ ( [ &point, &retVal ]( const PointValueType aVal ) {point.y( aVal ); retVal.push_back( point ); } ) ]
+                                           >> float_[ forMore ]
                                            )
                                            ),
                                            // End Grammar
@@ -297,7 +311,7 @@ namespace blib {
 
         }
 
-        basic_scene_iterator( const Tree& aTree ) :
+        basic_scene_iterator( Tree& aTree ) :
           _t( aTree ) {
           _it = aTree.pre_order_begin( );
         }
@@ -317,21 +331,19 @@ namespace blib {
         }
 
         RenderData& dereference( ) const {
-          return *_it;
+          return _it->data( );
         }
       };
     } // _private
 
     // Basic scene manager. Just a flat tree
     class BasicSceneManager {
-    private:
+    public:
       typedef _private::Node Node;
       typedef _private::Tree Tree;
       typedef _private::SVGReader SVGReader;
       typedef _private::basic_scene_iterator<BasicSceneManager> basic_scene_iterator;
       typedef RenderNodeData RenderData;
-
-      friend class basic_scene_iterator;
 
     private:
       Tree _t;
@@ -344,8 +356,16 @@ namespace blib {
       }
 
       void addModel( std::string const& aFileName ) {
-        const auto node = svgReader.createGroupNode( aFileName );
+       const auto node = svgReader.createGroupNode( aFileName );
         _t.root( ).addChild( node );
+      }
+
+      basic_scene_iterator begin( ) {
+        return basic_scene_begin( );
+      }
+
+      basic_scene_iterator end( ) {
+        return basic_scene_end( );
       }
 
       basic_scene_iterator basic_scene_begin( ) {

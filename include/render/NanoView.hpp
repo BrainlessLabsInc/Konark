@@ -5,24 +5,13 @@
 #include "sdl.hpp"
 #include "Nanovg.hpp"
 #include "RenderNode.hpp"
+#include "BasicSceneManager.hpp"
 #include <boost/variant.hpp>
 #include <memory>
 
 namespace blib {
   namespace render {
     namespace nanovg {
-      class NanoRender {
-      private:
-        NanoVG _vg;
-
-      public:
-        NanoRender( ) {
-          _vg.init( );
-        }
-
-        ~NanoRender( ) {}
-      };
-
       typedef std::shared_ptr<NanoVG> VgPtrType;
       typedef std::shared_ptr<bgeom::TransformMatrix> TransformMatrixPtr;
 
@@ -37,7 +26,7 @@ namespace blib {
           auto& center = circle.center( );
           center.x( aPoint.x( ) );
           center.y( aPoint.y( ) );
-          circle.radius( 0.1 );
+          circle.radius( 0.1F );
           transformPoint( center );
           _vg->circle( circle );
         }
@@ -265,31 +254,151 @@ namespace blib {
       // View tag, this will be used to specialize the traits.
       // This is inorder used in the view class
       struct NanoViewTag {};
+
+      // The renderer. This is responsible to render anything
+      // This should satisfy any requirements for the Renderer in View
+      class NanoRender {
+      private:
+        VgPtrType _vg;
+        RenderNodeDataVisitor _nodeVisitor;
+
+      public:
+        typedef NanoVG::ValueType ValueType;
+        typedef RenderNodeData RenderElementType;
+
+      public:
+        NanoRender( ) {
+          _vg = std::make_shared<NanoVG>( );
+        }
+
+        bool init( ValueType aHeight,
+                   ValueType aWidth,
+                   ValueType aDevicePixelRatio = 1.F ) {
+          const bool ret = _vg->init( aHeight, aWidth, aDevicePixelRatio );
+          if ( ret ) {
+            _nodeVisitor.init( _vg );
+          }
+
+          return ret;
+        }
+
+        void apply( RenderElementType& aRenderNodeData ) {
+          boost::apply_visitor( _nodeVisitor, aRenderNodeData );
+        }
+
+        void cleanup( ) {
+          clear( );
+        }
+
+        void clear( ) {
+          _vg->clear( );
+        }
+
+        void beginDraw( ) {
+          _vg->beginDraw( );
+        }
+
+        void endDraw( ) {
+          _vg->endDraw( );
+        }
+
+        ~NanoRender( ) {}
+      };
+
+      class SDLDisplay {
+      public:
+        typedef blib::render::sdl::Event Event;
+
+      private:
+        blib::render::sdl::SDL _sdl;
+        typedef NanoVG::ValueType ValueType;
+
+      public:
+        SDLDisplay( ) {}
+        bool init( ValueType aHeight,
+                   ValueType aWidth,
+                   ValueType aDevicePixelRatio = 1.F ) {
+          return _sdl.init( aHeight, aWidth, aDevicePixelRatio );
+        }
+
+        void beginDraw( ) {
+          _sdl.beginDraw( );
+        }
+
+        void endDraw( ) {
+          _sdl.endDraw( );
+        }
+
+        void clear( ) {
+          _sdl.clear( );
+        }
+
+        void cleanup( ) {
+          _sdl.cleanup( );
+        }
+
+        Event pollEvent( ) {
+          return _sdl.pollEvent( );
+        }
+      };
+
+      // Scene Manager
+      class SceneManager {
+      private:
+        typedef blib::render::BasicSceneManager BasicSceneManager;
+        typedef blib::render::nanovg::SDLDisplay::Event Event;
+
+      private:
+        BasicSceneManager _s;
+
+      public:
+        BasicSceneManager& renderElements( ) {
+          return _s;
+        }
+
+        bool next( Event const& /*aEvent*/ ) {
+          return true;
+        }
+
+        void addModel( std::string const& aPath ) {
+          _s.addModel( aPath );
+        }
+      };
     }
 
     namespace traits {
       template<>
       struct render_type < blib::render::nanovg::NanoViewTag > {
-        typedef ::blib::render::nanovg::NanoVG type;
+        typedef blib::render::nanovg::NanoRender type;
       };
 
       template<>
       struct scene_manager < blib::render::nanovg::NanoViewTag > {
-
+        typedef blib::render::nanovg::SceneManager type;
       };
 
       template<>
-      struct display_type < blib::render::nanovg::NanoViewTag > {};
+      struct display_type < blib::render::nanovg::NanoViewTag > {
+        typedef blib::render::nanovg::SDLDisplay type;
+      };
 
       template<>
-      struct display_value_type < blib::render::nanovg::NanoViewTag > {};
+      struct display_value_type < blib::render::nanovg::NanoViewTag > {
+        typedef blib::geometry::Point2D::ValueType type;
+      };
 
       template<>
-      struct render_element_type < blib::render::nanovg::NanoViewTag > {};
+      struct render_element_type < blib::render::nanovg::NanoViewTag > {
+        typedef blib::render::nanovg::NanoRender::RenderElementType type;
+      };
 
       template<>
-      struct event_type < blib::render::nanovg::NanoViewTag > {};
+      struct event_type < blib::render::nanovg::NanoViewTag > {
+        typedef blib::render::nanovg::SDLDisplay::Event type;
+      };
     } // namespace traits
+
+    typedef blib::render::View<blib::render::nanovg::NanoViewTag> NanoView;
   }
 }
 

@@ -51,8 +51,8 @@ namespace blib {
 
     public:
       View( ) :
-        _height( 512 ),
-        _width( 1024 ),
+        _height( 480 ),
+        _width( 640 ),
         _devicePixelRatio( 1 ),
         _running( false ) {
         init( );
@@ -69,6 +69,18 @@ namespace blib {
         return false;
       }
 
+      Display& d( ) {
+        return _d;
+      }
+
+      Renderer& r( ) {
+        return _r;
+      }
+
+      SceneManager& s( ) {
+        return _s;
+      }
+
       void cleanup( ) {
         _r.cleanup( );
         _d.cleanup( );
@@ -76,6 +88,7 @@ namespace blib {
 
       void clear( ) {
         _d.clear( );
+        _r.clear( );
       }
 
       void beginDraw( ) {
@@ -99,7 +112,7 @@ namespace blib {
           // Start drawing
           beginDraw( );
           // Process all the rendering elements
-          for ( const RenderElementType re : _s.renderElements( ) ) {
+          for ( RenderElementType re : _s.renderElements( ) ) {
             // Each node from the scene should be passed to the renderer to process
             _r.apply( re );
           }
