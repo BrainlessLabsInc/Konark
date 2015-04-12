@@ -71,6 +71,7 @@ namespace blib {
         const auto& p = aMat.mat( ) * v;
         _coordinates[ 0 ] = p( 0 );
         _coordinates[ 1 ] = p( 1 );
+        return *this;
       }
 
       ValueType magnitude( ) const {

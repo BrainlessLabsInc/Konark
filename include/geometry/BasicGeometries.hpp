@@ -6,6 +6,7 @@
 #include <cmath>
 #include <boost/geometry/geometries/geometries.hpp>
 #include "Ellipse.hpp"
+#include "Circle.hpp"
 
 namespace blib {
   namespace geometry {

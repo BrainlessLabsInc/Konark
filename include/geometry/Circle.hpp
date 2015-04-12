@@ -27,6 +27,10 @@ namespace blib {
         return _center;
       }
 
+      Point2D const& center( ) const {
+        return _center;
+      }
+
     private:
       ValueType _radius;
       Point2D _center;

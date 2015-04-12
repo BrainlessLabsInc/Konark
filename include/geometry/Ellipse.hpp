@@ -38,6 +38,10 @@ namespace blib {
         return _center;
       }
 
+      Point2D const& center( ) const {
+        return _center;
+      }
+
     private:
       ValueType _heigth, _width;
       Point2D _center;

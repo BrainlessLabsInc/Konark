@@ -37,13 +37,11 @@ namespace blib {
           _fb( nullptr ),
           _height( 512 ),
           _width( 1024 ),
-          _devicePixelRatio( 1.F ) {
+          _devicePixelRatio( 1.F ) {}
 
-        }
-
-        bool init( const ValueType aHeight,
-                   const ValueType aWidth,
-                   const ValueType aDevicePixelRatio ) {
+        bool init( const ValueType aHeight = 512,
+                   const ValueType aWidth = 1024,
+                   const ValueType aDevicePixelRatio = 1.F ) {
           _height = aHeight;
           _width = aWidth;
           _devicePixelRatio = aDevicePixelRatio;
@@ -58,7 +56,7 @@ namespace blib {
 
         void beginDraw( ) {
           // Calculate pixel ration for hi-dpi devices.
-          nvgBeginFrame( _vg, _width, _height, _devicePixelRatio );
+          nvgBeginFrame( _vg, static_cast<int>(_width), static_cast<int>(_height), _devicePixelRatio );
         }
 
         void endDraw( ) {
@@ -142,6 +140,16 @@ namespace blib {
           const auto& min = aRect.min_corner( );
           const auto& max = aRect.max_corner( );
           nvgRect( _vg, min.x( ), min.y( ), max.x( ), max.y( ) );
+        }
+
+        void circle( bgeom::Circle const& aCircle ) {
+          const auto& center = aCircle.center( );
+          nvgCircle( _vg, center.x( ), center.y( ), aCircle.radius( ) );
+        }
+
+        void ellipse( bgeom::Ellipse const& aEllipse ) {
+          const auto& center = aEllipse.center( );
+          nvgEllipse( _vg, center.x( ), center.y( ), aEllipse.width( ), aEllipse.height( ) );
         }
       };
     }
