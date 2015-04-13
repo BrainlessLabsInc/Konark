@@ -46,6 +46,18 @@ namespace blib {
         EventTypePtr& eventPtr( ) {
           return _event;
         }
+
+        EventTypePtr operator->( ) const {
+          return _event;
+        }
+
+        operator bool( ) const {
+          bool ret = false;
+          if ( _event ) {
+            ret = true;
+          }
+          return ret;
+        }
       };
 
       class SDL {
@@ -181,6 +193,5 @@ namespace blib {
     }
   }
 }
-
 
 #endif // BLIB_SDL_HPP

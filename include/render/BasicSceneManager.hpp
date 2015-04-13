@@ -1,407 +1,384 @@
-#ifndef BLIB_NANOVIEW_HPP
-#define BLIB_NANOVIEW_HPP
+#ifndef BLIB_BASICSCENEMANAGER_HPP
+#define BLIB_BASICSCENEMANAGER_HPP
 
-#include "View.hpp"
-#include "sdl.hpp"
-#include "Nanovg.hpp"
+#include <boost/spirit/include/qi.hpp>
+#include <boost/spirit/include/qi_char_.hpp>
+#include <boost/iterator/iterator_facade.hpp>
+#include "containers/tree/NTree.hpp"
 #include "RenderNode.hpp"
-#include "BasicSceneManager.hpp"
-#include <boost/variant.hpp>
-#include <memory>
+#include "RenderUtils.hpp"
+#include "xml/pugixml.hpp"
+#include "log/Log.hpp"
 
 namespace blib {
   namespace render {
-    namespace nanovg {
-      typedef std::shared_ptr<NanoVG> VgPtrType;
-      typedef std::shared_ptr<bgeom::TransformMatrix> TransformMatrixPtr;
+    namespace _private {
+      typedef ::blib::container::tree::Node<blib::render::RenderNodeData> Node;
+      typedef ::blib::container::tree::NTree<Node> Tree;
 
-      class MultiGeometryVisitor : public boost::static_visitor < > {
-      private:
-        TransformMatrixPtr _curTransMatPtr;
-        VgPtrType _vg;
+      // Class reads svg files and builds the tree nodes
+      class SVGReader {
+      public:
+        SVGReader( ) {}
+        ~SVGReader( ) {}
+        Node createGroupNode( const std::string& aFileName ) {
+          ::pugi::xml_document doc;
+          ::pugi::xml_parse_result result = doc.load_file( aFileName.c_str( ) );
 
-      private:
-        void drawPoint( bgeom::Point2D& aPoint ) {
-          bgeom::Circle circle;
-          auto& center = circle.center( );
-          center.x( aPoint.x( ) );
-          center.y( aPoint.y( ) );
-          circle.radius( 0.1F );
-          transformPoint( center );
-          _vg->circle( circle );
-        }
+          Node ret;
+          if ( result ) {
+            const blib::render::Group group( aFileName );
+            ret.data( group );
 
-        void drawLineString( bgeom::LineString& aLineString ) {
-          bool first = true;
-          for ( auto p : aLineString ) {
-            transformPoint( p );
-            _vg->moveTo( p );
-            if ( first ) {
-              first = false;
-            }
-            else {
-              _vg->lineTo( p );
+            for ( auto g : doc.children( "g" ) ) {
+              for ( auto shape : g.children( ) ) {
+                const auto shapeNode = createShapeNode( shape );
+                if ( shapeNode ) {
+                  ret.addChild( shapeNode );
+                }
+              }
             }
           }
-        }
-
-        void drawRing( bgeom::Ring& aRing ) {
-          bool first = false;
-          bgeom::Point2D firstPoint;
-          for ( auto& p : aRing ) {
-            transformPoint( p );
-            _vg->moveTo( p );
-            if ( first ) {
-              first = false;
-              firstPoint = p;
-            }
-            else {
-              _vg->lineTo( p );
-            }
+          else {
+            //std::cout << "SVG [" << aFileName << "] parsed with errors" << "\n";
+            //std::cout << "Error description: " << result.description( ) << "\n";
+            //std::cout << "Error offset: " << result.offset << std::endl;
+            l( ).error( "SVG Parser Error" );
           }
-          _vg->moveTo( firstPoint );
-          _vg->lineTo( firstPoint );
-        }
 
-        void drawPolygon( bgeom::Polygon& aPolygon ) {
-          drawRing( aPolygon.outer( ) );
-          for ( auto& innerRing : aPolygon.inners( ) ) {
-            drawRing( innerRing );
-          }
+          return ret;
         }
-
-        bgeom::Point2D& transformPoint( bgeom::Point2D& aPoint ) {
-          if ( _curTransMatPtr ) {
-            aPoint.apply( *_curTransMatPtr );
-          }
-          return aPoint;
-        }
-
-      public:
-        void init( VgPtrType& aPtr ) {
-          vg( aPtr );
-        }
-
-        VgPtrType vg( ) const {
-          return _vg;
-        }
-
-        void vg( VgPtrType& aPtr ) {
-          _vg = aPtr;
-        }
-
-        void curTransMat( TransformMatrixPtr& aMat ) {
-          _curTransMatPtr = aMat;
-        }
-
-        TransformMatrixPtr curTransMat( ) const {
-          return _curTransMatPtr;
-        }
-
-        void operator()( bgeom::Point2D& aPoint ) {
-          drawPoint( aPoint );
-        }
-
-        void operator()( bgeom::MultiPoint& aMultiPoint ) {
-          for ( auto& p : aMultiPoint ) {
-            drawPoint( p );
-          }
-        }
-
-        void operator()( bgeom::LineString& aLineString ) {
-          drawLineString( aLineString );
-        }
-
-        void operator()( bgeom::MultiLineString& aMultiLineString ) {
-          for ( auto lineString : aMultiLineString ) {
-            drawLineString( lineString );
-          }
-        }
-
-        void operator()( bgeom::Polygon& aPolygon ) {
-          drawPolygon( aPolygon );
-        }
-
-        void operator()( bgeom::MultiPolygon& aMultiPolygon ) {
-          for ( auto& polygon : aMultiPolygon ) {
-            drawPolygon( polygon );
-          }
-        }
-
-        void operator()( bgeom::Box& aBox ) {
-          _vg->rect( aBox );
-        }
-
-        void operator()( bgeom::Ring& aRing ) {
-          drawRing( aRing );
-        }
-
-        void operator()( bgeom::Segment& aSegment ) {
-          // TODO
-        }
-
-        void operator()( bgeom::ReferringSegment& aReferringSegment ) {
-          // TODO
-        }
-
-        void operator()( bgeom::Ellipse& aEllipse ) {
-          auto& center = aEllipse.center( );
-          transformPoint( center );
-          _vg->ellipse( aEllipse );
-        }
-
-        void operator()( bgeom::Circle& aCircle ) {
-          auto& center = aCircle.center( );
-          transformPoint( center );
-          _vg->circle( aCircle );
-        }
-      };
-
-      class RenderAttributeVisitor : public boost::static_visitor < > {
       private:
-        VgPtrType _vg;
+        // Create a complete shape node
+        Node createShapeNode( ::pugi::xml_node const& aShapeSVGNode ) {
 
-      public:
-        ~RenderAttributeVisitor( ) {}
-
-        void init( VgPtrType& aPtr ) {
-          vg( aPtr );
-        }
-
-        VgPtrType vg( ) const {
-          return _vg;
-        }
-
-        void vg( VgPtrType& aPtr ) {
-          _vg = aPtr;
-        }
-
-        void operator()( StrokeWidth& aAttr ) {
-          _vg->strokeWidth( aAttr );
-        }
-
-        void operator()( LineCapStyle& aAttr ) {
-          _vg->lineCapStyle( aAttr );
-        }
-
-        void operator()( LineJoinStyles& aAttr ) {
-          _vg->lineJoinStyle( aAttr );
-        }
-
-        void operator()( MitterLimit& aAttr ) {
-          _vg->mitterLimit( aAttr );
-        }
-
-        void operator()( StrokeStyle& aAttr ) {
-          _vg->strokeStyle( aAttr );
-        }
-
-        void operator()( FillStyle& aAttr ) {
-          _vg->fillStyle( aAttr );
-        }
-
-        void operator()( RoundedEdgeAttrib& aAttr ) {
-          // TODO
-          l( ).info( "RoundedEdgeAttrib Not implemented" );
-        }
-      };
-
-      class RenderNodeDataVisitor : public boost::static_visitor < > {
-      private:
-        VgPtrType _vg;
-        RenderAttributeVisitor _renderNodeDataVisitor;
-        MultiGeometryVisitor _multiGeomVisitor;
-        TransformMatrixPtr _curTransMatPtr;
-
-      public:
-        void init( VgPtrType& aPtr ) {
-          vg( aPtr );
-          _renderNodeDataVisitor.init( vg( ) );
-          _multiGeomVisitor.init( vg( ) );
-          _curTransMatPtr = std::make_shared<bgeom::TransformMatrix>( );
-        }
-
-        VgPtrType vg( ) const {
-          return _vg;
-        }
-
-        void vg( VgPtrType& aPtr ) {
-          _vg = aPtr;
-        }
-
-        ~RenderNodeDataVisitor( ) {}
-
-        void operator()( MultiGeometry& aGeom ) {
-          boost::apply_visitor( _multiGeomVisitor, aGeom );
-        }
-
-        void operator()( RenderAttributes& aRenderAttribute ) {
-          for ( auto re : aRenderAttribute ) {
-            boost::apply_visitor( _renderNodeDataVisitor, re );
+          const auto geomType = stringToGeometryTypesEnum( aShapeSVGNode.name( ) );
+          Node geomNode;
+          switch ( geomType ) {
+          case GeometryTypesEnum::kBox:
+            geomNode = createBoxNode( aShapeSVGNode );
+            break;
+          case GeometryTypesEnum::kCircle:
+            geomNode = createCircleNode( aShapeSVGNode );
+            break;
+          case GeometryTypesEnum::kLineString:
+            break;
+          case GeometryTypesEnum::kPolygon:
+            geomNode = createPolygonNode( aShapeSVGNode );
+            break;
+          case GeometryTypesEnum::kEllipse:
+            geomNode = createEllipseNode( aShapeSVGNode );
+            break;
           }
-        }
 
-        void operator()( bgeom::TransformMatrix& aTransMat ) {
-          *_curTransMatPtr = aTransMat;
-          _multiGeomVisitor.curTransMat( _curTransMatPtr );
-        }
+          auto attribNode = createAttributeNode( aShapeSVGNode );
 
-        void operator()( Group& aGroup ) {
-          // TODO
-          // Dont know what to do yet
-          l( ).info( "Not implemented {}", aGroup.id( ) );
-        }
-      };
-
-      // View tag, this will be used to specialize the traits.
-      // This is inorder used in the view class
-      struct NanoViewTag {};
-
-      // The renderer. This is responsible to render anything
-      // This should satisfy any requirements for the Renderer in View
-      class NanoRender {
-      private:
-        VgPtrType _vg;
-        RenderNodeDataVisitor _nodeVisitor;
-
-      public:
-        typedef NanoVG::ValueType ValueType;
-        typedef RenderNodeData RenderElementType;
-
-      public:
-        NanoRender( ) {
-          _vg = std::make_shared<NanoVG>( );
-        }
-
-        bool init( ValueType aHeight,
-                   ValueType aWidth,
-                   ValueType aDevicePixelRatio = 1.F ) {
-          const bool ret = _vg->init( aHeight, aWidth, aDevicePixelRatio );
-          if ( ret ) {
-            _nodeVisitor.init( _vg );
+          Node ret;
+          if ( attribNode ) {
+            attribNode.addChild( geomNode );
+            ret = attribNode;
+          }
+          else {
+            ret = geomNode;
           }
 
           return ret;
         }
 
-        void apply( RenderElementType& aRenderNodeData ) {
-          boost::apply_visitor( _nodeVisitor, aRenderNodeData );
+        // Create a Box node
+        Node createBoxNode( ::pugi::xml_node const& aShapeSVGNode ) {
+          bgeom::Point2D maxCorner, minCorner;
+          for ( auto const& attr : aShapeSVGNode.attributes( ) ) {
+            const std::string attrName = attr.name( );
+            if ( attrName == "x" ) {
+              minCorner.x( attr.as_float( ) );
+            }
+            else if ( attrName == "y" ) {
+              minCorner.y( attr.as_float( ) );
+            }
+            else if ( attrName == "height" ) {
+              maxCorner.y( attr.as_float( ) );
+            }
+            else if ( attrName == "width" ) {
+              maxCorner.x( attr.as_float( ) );
+            }
+          }
+
+          maxCorner.x( maxCorner.x( ) + minCorner.x( ) );
+          maxCorner.y( maxCorner.y( ) + minCorner.y( ) );
+
+          bgeom::Box box;
+          box.min_corner( ) = minCorner;
+          box.max_corner( ) = maxCorner;
+
+          const MultiGeometry geom = box;
+
+          Node ret;
+          ret.data( geom );
+
+          return ret;
         }
 
-        void cleanup( ) {
-          clear( );
+        // Create a circle node
+        Node createCircleNode( ::pugi::xml_node const& aShapeSVGNode ) {
+          bgeom::Circle circle;
+
+          for ( auto const& attr : aShapeSVGNode.attributes( ) ) {
+            const std::string attrName = attr.name( );
+            if ( "cx" == attrName ) {
+              circle.center( ).x( attr.as_float( ) );
+            }
+            else if ( "cy" == attrName ) {
+              circle.center( ).y( attr.as_float( ) );
+            }
+            else if ( "r" == attrName ) {
+              circle.radius( attr.as_float( ) );
+            }
+          }
+
+          const MultiGeometry geom = circle;
+
+          Node ret;
+          ret.data( geom );
+
+          return ret;
         }
 
-        void clear( ) {
-          _vg->clear( );
+        // Create polygon node
+        Node createPolygonNode( ::pugi::xml_node const& aShapeSVGNode ) {
+          bgeom::Polygon polygon;
+
+          for ( auto const& attr : aShapeSVGNode.attributes( ) ) {
+            const std::string attrName = attr.name( );
+            if ( "points" == attrName ) {
+              const std::string pointString = attr.value( );
+              const auto points = parsePoints( pointString );
+              for ( auto const& point : points ) {
+                polygon.outer( ).push_back( point );
+              }
+            }
+          }
+
+          const MultiGeometry geom = polygon;
+          Node ret;
+          ret.data( geom );
+
+          return ret;
         }
 
-        void beginDraw( ) {
-          _vg->beginDraw( );
+        // Create Ellipse node
+        Node createEllipseNode( ::pugi::xml_node const& aShapeSVGNode ) {
+          bgeom::Ellipse ellipse;
+
+          for ( auto const& attr : aShapeSVGNode.attributes( ) ) {
+            const std::string attrName = attr.name( );
+            if ( "cx" == attrName ) {
+              ellipse.center( ).x( attr.as_float( ) );
+            }
+            else if ( "cy" == attrName ) {
+              ellipse.center( ).y( attr.as_float( ) );
+            }
+            else if ( "rx" == attrName ) {
+              ellipse.width( attr.as_float( ) );
+            }
+            else if ( "ry" == attrName ) {
+              ellipse.height( attr.as_float( ) );
+            }
+          }
+
+          const MultiGeometry geom = ellipse;
+
+          Node ret;
+          ret.data( geom );
+
+          return ret;
         }
 
-        void endDraw( ) {
-          _vg->endDraw( );
+        // Create Attribute Node
+        Node createAttributeNode( ::pugi::xml_node const& aShapeSVGNode ) {
+          RenderAttributes renderAttributes;
+          RoundedEdgeAttrib roundEdgeAttrib;
+
+          bool hasrxry = false;
+
+          for ( auto const& attr : aShapeSVGNode.attributes( ) ) {
+            const std::string attrName = attr.name( );
+            if ( attrName == "stroke-width" ) {
+              StrokeWidth strokeWidth;
+              strokeWidth.strokeWidth( attr.as_float( ) );
+              renderAttributes.push_back( strokeWidth );
+            }
+            else if ( attrName == "rx" ) {
+              roundEdgeAttrib.rx( attr.as_float( ) );
+              hasrxry = true;
+            }
+            else if ( attrName == "ry" ) {
+              roundEdgeAttrib.ry( attr.as_float( ) );
+              hasrxry = true;
+            }
+            else if ( attrName == "stroke" ) {
+              std::string color = attr.value( );
+              StrokeStyle strokeAttrib;
+              const auto stroke = blib::render::stringToColor( color );
+              strokeAttrib.strokeColor( stroke );
+              renderAttributes.push_back( strokeAttrib );
+            }
+            else if ( attrName == "fill" ) {
+              std::string color = attr.value( );
+              FillStyle fillStyleAttrib;
+              fillStyleAttrib.fillColor( blib::render::stringToColor( color ) );
+              renderAttributes.push_back( fillStyleAttrib );
+            }
+          }
+
+          if ( hasrxry ) {
+            renderAttributes.push_back( roundEdgeAttrib );
+          }
+
+          Node ret;
+          ret.data( renderAttributes );
+
+          return ret;
         }
 
-        ~NanoRender( ) {}
+        // This will parse points like 200,10 250,190 160,210
+        std::vector<bgeom::Point2D> parsePoints( std::string const& aPointString ) {
+          using namespace boost::spirit;
+          using namespace boost::spirit::qi;
+          using qi::phrase_parse;
+
+          ::std::vector<bgeom::Point2D> retVal;
+          bgeom::Point2D point;
+          auto it = aPointString.begin( );
+          typedef ::boost::geometry::traits::coordinate_type< ::blib::geometry::Point2D >::type PointValueType;
+          // To capture a single point like 23
+          const auto for1 = [ &point ]
+            ( const PointValueType aVal ) {
+            point.x( aVal );
+          };
+          // Capture something like 23,24,..
+          const auto forMore = [ &point, &retVal ]
+            ( const PointValueType aVal ) {
+            point.y( aVal );
+            retVal.push_back( point );
+          };
+
+          const bool r = qi::phrase_parse( it,
+                                           aPointString.end( ),
+                                           // Begin Grammar
+                                           (
+                                           *( // Repeat this grammar
+                                           float_[ for1 ]
+                                           >> char_( ',' )
+                                           >> float_[ forMore ]
+                                           )
+                                           ),
+                                           // End Grammar
+                                           space );
+          if ( !r ) {
+            // Do something. We did not get a full match
+            l( ).alert( "We did not get a full match" );
+          }
+
+          return retVal;
+        }
       };
 
-      class SDLDisplay {
+      // Iterator for the scene manager
+      template<typename _BasicSceneManager>
+      class basic_scene_iterator :
+        public boost::iterator_facade < basic_scene_iterator<_BasicSceneManager>, typename _BasicSceneManager::RenderData, boost::forward_traversal_tag > {
+      private:
+        typedef _BasicSceneManager BasicSceneManager;
+        typedef typename BasicSceneManager::RenderData RenderData;
+        typedef typename BasicSceneManager::Tree Tree;
+        typedef typename Tree::pre_order_iterator pre_order_iterator;
+        friend class boost::iterator_core_access;
+
       public:
-        typedef blib::render::sdl::Event Event;
+        typedef basic_scene_iterator<BasicSceneManager> SelfType;
 
       private:
-        blib::render::sdl::SDL _sdl;
-        typedef NanoVG::ValueType ValueType;
+        Tree _t;
+        pre_order_iterator _it;
 
       public:
-        SDLDisplay( ) {}
-        bool init( ValueType aHeight,
-                   ValueType aWidth,
-                   ValueType aDevicePixelRatio = 1.F ) {
-          return _sdl.init( aHeight, aWidth, aDevicePixelRatio );
+        basic_scene_iterator( ) {}
+
+        basic_scene_iterator( basic_scene_iterator const& aOther ) :
+          _t( aOther._t ),
+          _it( aOther._it ) {
+
         }
 
-        void beginDraw( ) {
-          _sdl.beginDraw( );
+        basic_scene_iterator( Tree& aTree ) :
+          _t( aTree ) {
+          _it = aTree.pre_order_begin( );
         }
 
-        void endDraw( ) {
-          _sdl.endDraw( );
+        SelfType& operator = ( SelfType const& aOther ) {
+          _t = aOther._t;
+          _it = aOther._it;
         }
-
-        void clear( ) {
-          _sdl.clear( );
-        }
-
-        void cleanup( ) {
-          _sdl.cleanup( );
-        }
-
-        Event pollEvent( ) {
-          return _sdl.pollEvent( );
-        }
-      };
-
-      // Scene Manager
-      class SceneManager {
-      private:
-        typedef blib::render::BasicSceneManager BasicSceneManager;
-        typedef blib::render::nanovg::SDLDisplay::Event Event;
 
       private:
-        BasicSceneManager _s;
-
-      public:
-        BasicSceneManager& renderElements( ) {
-          return _s;
+        void increment( ) {
+          ++_it;
         }
 
-        bool next( Event const& /*aEvent*/ ) {
-          return true;
+        bool equal( SelfType const& aOther ) const {
+          return _it == aOther._it;
         }
 
-        void addModel( std::string const& aPath ) {
-          _s.addModel( aPath );
+        RenderData& dereference( ) const {
+          return _it->data( );
         }
       };
-    }
+    } // _private
 
-    namespace traits {
-      template<>
-      struct render_type < blib::render::nanovg::NanoViewTag > {
-        typedef blib::render::nanovg::NanoRender type;
-      };
+    // Basic scene manager. Just a flat tree
+    class BasicSceneManager {
+    public:
+      typedef _private::Node Node;
+      typedef _private::Tree Tree;
+      typedef _private::SVGReader SVGReader;
+      typedef _private::basic_scene_iterator<BasicSceneManager> basic_scene_iterator;
+      typedef RenderNodeData RenderData;
 
-      template<>
-      struct scene_manager < blib::render::nanovg::NanoViewTag > {
-        typedef blib::render::nanovg::SceneManager type;
-      };
+    private:
+      Tree _t;
+      SVGReader svgReader;
 
-      template<>
-      struct display_type < blib::render::nanovg::NanoViewTag > {
-        typedef blib::render::nanovg::SDLDisplay type;
-      };
+    public:
+      BasicSceneManager( ) {
+        const Group g( "BasicSceneManager" );
+        _t.root( g );
+      }
 
-      template<>
-      struct display_value_type < blib::render::nanovg::NanoViewTag > {
-        typedef blib::geometry::Point2D::ValueType type;
-      };
+      void addModel( std::string const& aFileName ) {
+       const auto node = svgReader.createGroupNode( aFileName );
+        _t.root( ).addChild( node );
+      }
 
-      template<>
-      struct render_element_type < blib::render::nanovg::NanoViewTag > {
-        typedef blib::render::nanovg::NanoRender::RenderElementType type;
-      };
+      basic_scene_iterator begin( ) {
+        return basic_scene_begin( );
+      }
 
-      template<>
-      struct event_type < blib::render::nanovg::NanoViewTag > {
-        typedef blib::render::nanovg::SDLDisplay::Event type;
-      };
-    } // namespace traits
+      basic_scene_iterator end( ) {
+        return basic_scene_end( );
+      }
 
-    typedef blib::render::View<blib::render::nanovg::NanoViewTag> NanoView;
+      basic_scene_iterator basic_scene_begin( ) {
+        const basic_scene_iterator ret( _t );
+        return ret;
+      }
+
+      basic_scene_iterator basic_scene_end( ) {
+        const basic_scene_iterator ret;
+        return ret;
+      }
+    };
   }
 }
 
-#endif // BLIB_NANOVIEW_HPP
+#endif // BLIB_BASICSCENEMANAGER_HPP

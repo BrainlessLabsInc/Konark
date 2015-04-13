@@ -97,8 +97,8 @@ namespace blib {
       }
 
       void endDraw( ) {
-        _d.endDraw( );
         _r.endDraw( );
+        _d.endDraw( );
       }
 
       void loop( ) {

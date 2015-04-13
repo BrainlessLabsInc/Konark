@@ -18,9 +18,9 @@ namespace blib {
         };
       };
 
-      Color( ) :_r( 0 ), _g( 0 ), _b( 0 ), _a( 1 ) {}
+      Color( ) :_r( 0 ), _g( 0 ), _b( 0 ), _a( 225 ) {}
 
-      Color( ValueType aR, ValueType aG, ValueType aB, ValueType aA = 1 ) :
+      Color( ValueType aR, ValueType aG, ValueType aB, ValueType aA = 225 ) :
         _r( aR ), _g( aG ), _b( aB ), _a( aA ) {}
 
       Color( Color const& aOther ) {

@@ -57,9 +57,14 @@ namespace blib {
         void beginDraw( ) {
           // Calculate pixel ration for hi-dpi devices.
           nvgBeginFrame( _vg, static_cast<int>(_width), static_cast<int>(_height), _devicePixelRatio );
+          nvgBeginPath( _vg );
+          nvgMoveTo( _vg, 0, 0 );
         }
 
         void endDraw( ) {
+          // TODO Remove these two lines
+          //nvgFillColor( _vg, nvgRGBA( 255, 192, 11, 255 ) );
+          nvgFill( _vg );
           nvgEndFrame( _vg );
         }
 
@@ -68,22 +73,14 @@ namespace blib {
         }
 
         void strokeStyle( ren::StrokeStyle const& aStrokeStyle ) {
-          NVGcolor color = { 0 };
           const auto& inColor = aStrokeStyle.strokeColor( );
-          color.r = inColor._r;
-          color.g = inColor._g;
-          color.b = inColor._b;
-          color.a = inColor._a;
+          const NVGcolor color = nvgRGBA( inColor._r, inColor._g, inColor._b, inColor._a );
           nvgStrokeColor( _vg, color );
         }
 
         void fillStyle( ren::FillStyle const& aFillStrokeStyle ) {
-          NVGcolor color = { { 0 } };
           const auto& inColor = aFillStrokeStyle.fillColor( );
-          color.r = inColor._r;
-          color.g = inColor._g;
-          color.b = inColor._b;
-          color.a = inColor._a;
+          const NVGcolor color = nvgRGBA( inColor._r, inColor._g, inColor._b, inColor._a );
           nvgFillColor( _vg, color );
         }
 
@@ -155,4 +152,5 @@ namespace blib {
     }
   }
 }
+
 #endif // BLIB_NANOVG_HPP

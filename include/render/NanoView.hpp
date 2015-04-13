@@ -231,7 +231,9 @@ namespace blib {
 
         ~RenderNodeDataVisitor( ) {}
 
-        void operator()( MultiGeometry& aGeom ) {}
+        void operator()( MultiGeometry& aGeom ) {
+          boost::apply_visitor( _multiGeomVisitor, aGeom );
+        }
 
         void operator()( RenderAttributes& aRenderAttribute ) {
           for ( auto re : aRenderAttribute ) {
@@ -356,8 +358,24 @@ namespace blib {
           return _s;
         }
 
-        bool next( Event const& /*aEvent*/ ) {
-          return true;
+        bool next( Event const& aEvent ) {
+          bool ret = true;
+          if ( aEvent) {
+            switch ( aEvent->type ) {
+            case SDL_KEYDOWN:
+              if ( aEvent->key.keysym.sym == SDLK_ESCAPE ) {
+                ret = false;
+              }
+              break;
+            case SDL_QUIT:
+              ret = false;
+              break;
+            }
+          }
+          else {
+            ret = false;
+          }
+          return ret;
         }
 
         void addModel( std::string const& aPath ) {
