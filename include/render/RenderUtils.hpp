@@ -11,6 +11,7 @@ namespace blib {
   namespace render {
     enum class GeometryTypesEnum : ::std::uint8_t {
       kMultiPoint = 0,
+      kLine,
       kLineString,
       kMultiLineString,
       kPolygon,
@@ -34,7 +35,7 @@ namespace blib {
         ret = GeometryTypesEnum::kCircle;
       }
       else if ( aName == "line" ) {
-        ret = GeometryTypesEnum::kLineString;
+        ret = GeometryTypesEnum::kLine;
       }
       else if ( aName == "polyline" ) {
         ret = GeometryTypesEnum::kLineString;

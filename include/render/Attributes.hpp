@@ -38,7 +38,7 @@ namespace blib {
         return *this;
       }
 
-      bool operator==( Color const& aOther ) {
+      bool operator==( Color const& aOther ) const {
         bool ret = false;
         if ( aOther._r == _r &&
              aOther._g == _g &&
@@ -60,12 +60,24 @@ namespace blib {
       StrokeWidth( const StrokeWidthType aStrokeWidth = 1. ) :
         _strokeWidth( aStrokeWidth ) {}
 
+      StrokeWidth( StrokeWidth const& aOther ) :
+        _strokeWidth( aOther._strokeWidth ) {}
+
       void strokeWidth( const StrokeWidthType aStrokeWidth ) {
         _strokeWidth = aStrokeWidth;
       }
 
       StrokeWidthType strokeWidth( ) const {
         return _strokeWidth;
+      }
+
+      StrokeWidth& operator=( StrokeWidth const& aOther ) {
+        _strokeWidth = aOther._strokeWidth;
+        return *this;
+      }
+
+      bool operator==( StrokeWidth const& aOther ) const {
+        return aOther._strokeWidth == _strokeWidth;
       }
     };
 
@@ -84,12 +96,24 @@ namespace blib {
       LineCapStyle( const LineCapTypes aLineCap = LineCapTypes::kButt ) :
         _lineCap( aLineCap ) {}
 
+      LineCapStyle( LineCapStyle const& aOther ) :
+        _lineCap( aOther._lineCap ) {}
+
       void lineCap( const LineCapTypes aLineCap ) {
         _lineCap = aLineCap;
       }
 
       LineCapTypes lineCap( ) const {
         return _lineCap;
+      }
+
+      LineCapStyle& operator=( LineCapStyle const& aOther ) {
+        _lineCap = aOther._lineCap;
+        return *this;
+      }
+
+      bool operator==( LineCapStyle const& aOther ) const {
+        return aOther._lineCap == _lineCap;
       }
     };
 
@@ -108,12 +132,24 @@ namespace blib {
       LineJoinStyles( const LineJoinTypes aLineJoin = LineJoinTypes::kBevel ) :
         _lineJoin( aLineJoin ) {}
 
+      LineJoinStyles( LineJoinStyles const& aOther ) :
+        _lineJoin( aOther._lineJoin ) {}
+
       void lineJoin( const LineJoinTypes aLineJoin ) {
         _lineJoin = aLineJoin;
       }
 
       LineJoinTypes lineJoin( ) const {
         return _lineJoin;
+      }
+
+      LineJoinStyles& operator=( LineJoinStyles const& aOther ) {
+        _lineJoin = aOther._lineJoin;
+        return *this;
+      }
+
+      bool operator==( LineJoinStyles const& aOther ) const {
+        return aOther._lineJoin == _lineJoin;
       }
     };
 
@@ -127,6 +163,18 @@ namespace blib {
     public:
       MitterLimit( const MitterLimitType aMitterLimit = 10. ) :
         _mitterLimit( aMitterLimit ) {}
+
+      MitterLimit( MitterLimit const& aOther ) :
+        _mitterLimit( aOther._mitterLimit ) {}
+
+      MitterLimit& operator=( MitterLimit const& aOther ) {
+        _mitterLimit = aOther._mitterLimit;
+        return *this;
+      }
+
+      bool operator==( MitterLimit const& aOther ) const {
+        return aOther._mitterLimit == _mitterLimit;
+      }
 
       MitterLimitType mitterLimit( ) const {
         return _mitterLimit;
@@ -142,17 +190,30 @@ namespace blib {
       Color _strokeColor;
 
     public:
-      StrokeStyle( Color const& aColor = Color( ) ) :_strokeColor( aColor ) {}
+      StrokeStyle( Color const& aColor = Color( ) ) :
+        _strokeColor( aColor ) {}
 
       void strokeColor( Color const & aColor ) {
         _strokeColor = aColor;
       }
 
-      Color strokeColor( ) const {
-        return _strokeColor;
+      StrokeStyle( StrokeStyle const& aOther ) :
+        _strokeColor( aOther._strokeColor ) {}
+
+      StrokeStyle& operator=( StrokeStyle const& aOther ) {
+        _strokeColor = aOther._strokeColor;
+        return *this;
+      }
+
+      bool operator==( StrokeStyle const& aOther ) const {
+        return aOther._strokeColor == _strokeColor;
       }
 
       Color& strokeColor( ) {
+        return _strokeColor;
+      }
+
+      Color const& strokeColor( ) const {
         return _strokeColor;
       }
     };
@@ -165,11 +226,23 @@ namespace blib {
       FillStyle( Color const& aColor = Color( ) ) :
         _fillColor( aColor ) {}
 
+      FillStyle( FillStyle const& aOther ) :
+        _fillColor( aOther._fillColor ) {}
+
+      FillStyle& operator=( FillStyle const& aOther ) {
+        _fillColor = aOther._fillColor;
+        return *this;
+      }
+
+      bool operator==( FillStyle const& aOther ) const {
+        return aOther._fillColor == _fillColor;
+      }
+
       void fillColor( Color const & aColor ) {
         _fillColor = aColor;
       }
 
-      Color fillColor( ) const {
+      Color const& fillColor( ) const {
         return _fillColor;
       }
 
@@ -190,6 +263,26 @@ namespace blib {
       RoundedEdgeAttrib( ) :
         _rx( 0 ),
         _ry( 0 ) {}
+
+      RoundedEdgeAttrib( RoundedEdgeAttrib const& aOther ) :
+        _rx( aOther._rx ),
+        _ry( aOther._ry ) {
+
+      }
+
+      RoundedEdgeAttrib& operator=( RoundedEdgeAttrib const& aOther ) {
+        _rx = aOther._rx;
+        _ry = aOther._ry;
+      }
+
+      bool operator==( RoundedEdgeAttrib const& aOther ) const {
+        bool ret = false;
+        if ( aOther._rx == _rx &&
+             aOther._ry == _ry ) {
+          ret = true;
+        }
+        return ret;
+      }
 
       void rx( const CoordinateType aRx ) {
         _rx = aRx;
@@ -226,11 +319,11 @@ namespace blib {
     public:
       Group( IdType const & aId ) : _id( aId ) {}
 
-      ~Group( ) {}
-
-      IdType id( ) const {
-        return _id;
+      Group( Group const& aOther ) {
+        _id = aOther._id;
       }
+
+      ~Group( ) {}
 
       void id( IdType const& aId ) {
         _id = aId;
@@ -238,6 +331,57 @@ namespace blib {
 
       IdType& id( ) {
         return _id;
+      }
+
+      IdType const& id( ) const {
+        return _id;
+      }
+
+      bool operator==( Group const& aOther ) const {
+        return aOther._id == _id;
+      }
+
+      Group& operator=( Group const& aOther ) {
+        _id = aOther._id;
+        return *this;
+      }
+    };
+
+    class Id {
+    public:
+      typedef std::string IdType;
+
+    private:
+      IdType _id;
+
+    public:
+      Id( IdType const & aId ) : _id( aId ) {}
+
+      Id( Id const& aOther ) {
+        _id = aOther._id;
+      }
+
+      ~Id( ) {}
+
+      void id( IdType const& aId ) {
+        _id = aId;
+      }
+
+      IdType& id( ) {
+        return _id;
+      }
+
+      IdType const& id( ) const {
+        return _id;
+      }
+
+      bool operator==( Id const& aOther ) const {
+        return aOther._id == _id;
+      }
+
+      Id& operator=( Id const& aOther ) {
+        _id = aOther._id;
+        return *this;
       }
     };
   }

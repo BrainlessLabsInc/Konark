@@ -40,7 +40,8 @@ namespace blib {
       MultiGeometry,
       RenderAttributes,
       bgeom::TransformMatrix,
-      Group > RenderNodeData;
+      Group,
+      Id > RenderNodeData;
   }
 }
 
